@@ -2,7 +2,8 @@ import 'package:eksimsi_tdd_clean_architecture/features/agenda/data/models/agend
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/entities/agenda_header.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../fixtures/fixture_reader.dart';
+import '../../../../fixtures/fixture_reader.dart';
+
 
 main() {
   final agentaHeaderModel = AgendaHeaderModel(
@@ -17,7 +18,7 @@ main() {
     expect(agentaHeaderModel, isA<AgendaHeader>());
   });
 
-  test('should return valid model when passing li element', () {
+  test('should return valid model when passing </li> element', () {
     // arrange
     final document = fixture('agenda_header_fixture.html');
     final liTag = document.getElementsByTagName('li').first;
