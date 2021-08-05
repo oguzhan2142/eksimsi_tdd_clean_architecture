@@ -27,13 +27,13 @@ dependencies:
   dartz: ^0.10.0-nullsafety.2
   equatable: ^2.0.3
   flutter_bloc: ^7.1.0
+  html: ^0.15.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  mockito: ^5.0.13
   build_runner: ^2.1.0
-
+  mockito: ^5.0.13
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

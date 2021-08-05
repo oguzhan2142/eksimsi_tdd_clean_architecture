@@ -1,9 +1,10 @@
 import 'package:equatable/equatable.dart';
 
 class AgendaHeader extends Equatable {
-  String title;
-  String href;
-  String entryAmount;
+  final String title;
+  final String href;
+  final String entryAmount;
+  
   AgendaHeader({
     required this.title,
     required this.href,
