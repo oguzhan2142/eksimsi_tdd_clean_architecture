@@ -4,9 +4,5 @@ import '../../../../core/error/failures.dart';
 import '../entities/agenda_header.dart';
 
 abstract class AgendaRepository {
-
-  Future<Either<Failure,AgendaHeader>> getAgendaHeaders();
-
-  
-  
+  Future<Either<Failure, List<AgendaHeader>>> getAgendaHeaders();
 }
