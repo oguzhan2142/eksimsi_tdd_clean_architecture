@@ -1,15 +1,16 @@
-import 'package:equatable/equatable.dart';
+import 'package:eksimsi_tdd_clean_architecture/core/model/base_agenda_header.dart';
 
-class AgendaHeader extends Equatable {
-  final String title;
-  final String href;
+class AgendaHeader extends BaseHeader {
   final String entryAmount;
-  
+
   AgendaHeader({
-    required this.title,
-    required this.href,
+    required String title,
+    required String href,
     required this.entryAmount,
-  }) : super();
+  }) : super(
+          title: title,
+          href: href,
+        );
 
   @override
   List<Object?> get props => [title, href, entryAmount];
