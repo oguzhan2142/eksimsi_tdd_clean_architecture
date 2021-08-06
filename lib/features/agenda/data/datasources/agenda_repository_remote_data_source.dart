@@ -1,8 +1,28 @@
-import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/entities/agenda_header.dart';
-import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/entities/entries_page.dart';
+import 'package:dio/dio.dart';
+import 'package:eksimsi_tdd_clean_architecture/features/agenda/data/models/agenda_entries_page_model.dart';
+import 'package:eksimsi_tdd_clean_architecture/features/agenda/data/models/agenda_header_model.dart';
 
 abstract class AgendaRepositoryRemoteDataSource {
-  Future<AgendaEntriesPage> getAgendaEntriesPage();
+  Future<AgendaEntriesPageModel> getAgendaEntriesPage();
 
-  Future<List<AgendaHeader>> getAgendaHeaders();
+  Future<List<AgendaHeaderModel>> getAgendaHeaders();
+}
+
+class AgendaRepositoryRemoteDataSourceImpl
+    extends AgendaRepositoryRemoteDataSource {
+  final Dio client;
+
+  AgendaRepositoryRemoteDataSourceImpl({required this.client});
+
+  @override
+  Future<AgendaEntriesPageModel> getAgendaEntriesPage() {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<List<AgendaHeaderModel>> getAgendaHeaders() {
+    throw UnimplementedError();
+  }
+
+  
 }

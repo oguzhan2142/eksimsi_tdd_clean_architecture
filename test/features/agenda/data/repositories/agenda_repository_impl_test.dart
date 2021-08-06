@@ -3,6 +3,7 @@ import 'package:eksimsi_tdd_clean_architecture/core/error/exception.dart';
 import 'package:eksimsi_tdd_clean_architecture/core/error/failures.dart';
 import 'package:eksimsi_tdd_clean_architecture/core/platform/network_info.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/data/datasources/agenda_repository_remote_data_source.dart';
+import 'package:eksimsi_tdd_clean_architecture/features/agenda/data/models/agenda_header_model.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/data/repositories/agenda_repository_impl.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/entities/agenda_header.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -18,13 +19,13 @@ main() {
       mockAgendaRepositoryRemoteDataSource;
 
   late MockNetworkInfo mockNetworkInfo;
-  final agendaHeader = AgendaHeader(
+  final agendaHeader = AgendaHeaderModel(
     title: 'haer',
     href: 'asd',
     entryAmount: '2',
   );
-  final agendaHeaders = <AgendaHeader>[
-    AgendaHeader(title: 'title', href: '23', entryAmount: '1')
+  final agendaHeaders = <AgendaHeaderModel>[
+    AgendaHeaderModel(title: 'title', href: '23', entryAmount: '1')
   ];
 
   setUp(() {

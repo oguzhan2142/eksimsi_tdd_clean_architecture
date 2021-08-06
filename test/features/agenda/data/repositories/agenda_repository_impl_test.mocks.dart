@@ -8,10 +8,10 @@ import 'package:eksimsi_tdd_clean_architecture/core/platform/network_info.dart'
     as _i6;
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/data/datasources/agenda_repository_remote_data_source.dart'
     as _i3;
-import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/entities/agenda_header.dart'
-    as _i5;
-import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/entities/entries_page.dart'
+import 'package:eksimsi_tdd_clean_architecture/features/agenda/data/models/agenda_entries_page_model.dart'
     as _i2;
+import 'package:eksimsi_tdd_clean_architecture/features/agenda/data/models/agenda_header_model.dart'
+    as _i5;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: avoid_redundant_argument_values
@@ -22,8 +22,8 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: prefer_const_constructors
 // ignore_for_file: unnecessary_parenthesis
 
-class _FakeAgendaEntriesPage extends _i1.Fake implements _i2.AgendaEntriesPage {
-}
+class _FakeAgendaEntriesPageModel extends _i1.Fake
+    implements _i2.AgendaEntriesPageModel {}
 
 /// A class which mocks [AgendaRepositoryRemoteDataSource].
 ///
@@ -35,17 +35,17 @@ class MockAgendaRepositoryRemoteDataSource extends _i1.Mock
   }
 
   @override
-  _i4.Future<_i2.AgendaEntriesPage> getAgendaEntriesPage() =>
+  _i4.Future<_i2.AgendaEntriesPageModel> getAgendaEntriesPage() =>
       (super.noSuchMethod(Invocation.method(#getAgendaEntriesPage, []),
-              returnValue:
-                  Future<_i2.AgendaEntriesPage>.value(_FakeAgendaEntriesPage()))
-          as _i4.Future<_i2.AgendaEntriesPage>);
+              returnValue: Future<_i2.AgendaEntriesPageModel>.value(
+                  _FakeAgendaEntriesPageModel()))
+          as _i4.Future<_i2.AgendaEntriesPageModel>);
   @override
-  _i4.Future<List<_i5.AgendaHeader>> getAgendaHeaders() =>
+  _i4.Future<List<_i5.AgendaHeaderModel>> getAgendaHeaders() =>
       (super.noSuchMethod(Invocation.method(#getAgendaHeaders, []),
-              returnValue:
-                  Future<List<_i5.AgendaHeader>>.value(<_i5.AgendaHeader>[]))
-          as _i4.Future<List<_i5.AgendaHeader>>);
+              returnValue: Future<List<_i5.AgendaHeaderModel>>.value(
+                  <_i5.AgendaHeaderModel>[]))
+          as _i4.Future<List<_i5.AgendaHeaderModel>>);
   @override
   String toString() => super.toString();
 }
