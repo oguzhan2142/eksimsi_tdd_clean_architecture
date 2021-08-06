@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:eksimsi_tdd_clean_architecture/core/error/exception.dart';
 
 import 'package:eksimsi_tdd_clean_architecture/core/error/failures.dart';
 import 'package:eksimsi_tdd_clean_architecture/core/platform/network_info.dart';
@@ -17,16 +18,23 @@ class AgendaRepositoryImp extends AgendaRepository {
   });
 
   @override
-  Future<Either<Failure, AgendaEntriesPage>> getAgendaEntriesPage() {
+  Future<Either<Failure, AgendaEntriesPage>> getAgendaEntriesPage() async {
     networkInfo.isConnected;
-    throw UnimplementedError();
+    return Right(await agendaRepositoryRemoteDataSource.getAgendaEntriesPage());
   }
 
   @override
   Future<Either<Failure, List<AgendaHeader>>> getAgendaHeaders() async {
-    networkInfo.isConnected;
+    try {
+      if (!await networkInfo.isConnected) throw NoInternetException();
 
-    final headers = await agendaRepositoryRemoteDataSource.getAgendaHeaders();
-    return Right(headers);
+      final headers = await agendaRepositoryRemoteDataSource.getAgendaHeaders();
+
+      return Right(headers);
+    } on ServerException {
+      return Left(ServerFailure());
+    } on NoInternetException {
+      return Left(NoInternetFailure());
+    }
   }
 }

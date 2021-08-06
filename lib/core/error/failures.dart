@@ -6,3 +6,9 @@ class ServerFailure extends Failure {
   @override
   List<Object?> get props => [];
 }
+
+
+class NoInternetFailure extends Failure{
+  @override
+  List<Object?> get props => [];
+}
