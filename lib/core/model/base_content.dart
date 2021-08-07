@@ -1,14 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-/* 
-  inner link - class = 'b'
-  outer link - class = 'url'
-  spoiler (a taglarindan bazilari spoiler linki veriyor) class = 'b'
-  br
-  text
 
-
- */
 abstract class Content extends Equatable {}
 
 abstract class LinkContent extends Content {

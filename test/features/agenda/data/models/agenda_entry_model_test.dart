@@ -21,7 +21,7 @@ void main() {
     expect(agendaEntryModel, isA<AgendaEntry>());
   });
 
-  test('should return valid model when passing </li> element to fromLi method',
+  test('should return valid AgendaEntryModel when passing </li> element to fromLi method',
       () {
     // arrange
     final document = fixture('agenda_model.html');
