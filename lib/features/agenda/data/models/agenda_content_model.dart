@@ -56,4 +56,14 @@ class AgendaOuterLinkContentModel extends OuterLinkContent {
           href: href,
           text: text,
         );
+
+  factory AgendaOuterLinkContentModel.fromNode(Node node) {
+    final href = node.attributes['href'] == null ? '' : node.attributes['href'];
+
+    final text = node.text != null ? node.text!.trim() : '';
+
+
+
+    return AgendaOuterLinkContentModel(href: href!, text: text);
+  }
 }

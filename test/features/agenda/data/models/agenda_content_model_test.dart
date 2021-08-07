@@ -32,7 +32,7 @@ main() {
         'should return valid AgendaInnerLinkContentModel when call fromNode method',
         () {
       // arrange
-      final node = _getInnerLinkNode();
+      final node = _readLinkNode('inner_link_content.html');
       // act
       final contentModel = AgendaInnerLinkContentModel.fromNode(node);
       // assert
@@ -43,7 +43,7 @@ main() {
         'should return AgendaInnerContentModel with empty string when call fromNode with not existing href attribute',
         () {
       // arrange
-      final node = _getInnerLinkNode();
+      final node = _readLinkNode('inner_link_content.html');
 
       // act
       node.attributes.remove('href');
@@ -55,11 +55,37 @@ main() {
   });
 
   group('OuterLinkContentModel', () {
-    final content = AgendaOuterLinkContentModel(href: 'myHref', text: 'linzk');
+    final actualOuterLinkContent = AgendaOuterLinkContentModel(href: '/?q=ne+vereyim+abime', text: 'ne vereyim abime');
 
     test('should be a content', () {
       // assert
-      expect(content, isA<Content>());
+      expect(actualOuterLinkContent, isA<Content>());
+    });
+
+
+    test(
+        'should return valid AgendaOuterLinkContentModel when call fromNode method',
+        () {
+      // arrange
+      final node = _readLinkNode('outer_link_content.html');
+      // act
+      final contentModel = AgendaOuterLinkContentModel.fromNode(node);
+      // assert
+      expect(actualOuterLinkContent, contentModel);
+    });
+
+    test(
+        'should return AgendaOuterContentModel with empty string when call fromNode with not existing href attribute',
+        () {
+      // arrange
+      final node = _readLinkNode('outer_link_content.html');
+
+      // act
+      node.attributes.remove('href');
+      final content = AgendaOuterLinkContentModel.fromNode(node);
+
+      // assert
+      expect(content.href, '');
     });
 
 
@@ -90,8 +116,8 @@ main() {
   });
 }
 
-Node _getInnerLinkNode() {
-  final innerLinkDocument = fixture('inner_link_content.html');
+Node _readLinkNode(String fileName) {
+  final innerLinkDocument = fixture(fileName);
 
   final elements = innerLinkDocument.getElementsByTagName('a');
 
