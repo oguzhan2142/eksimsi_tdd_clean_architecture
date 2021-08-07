@@ -1,4 +1,3 @@
-
 import 'package:eksimsi_tdd_clean_architecture/core/model/base_content.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/data/models/agenda_content_model.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -36,6 +35,7 @@ main() {
       // act
       final contentModel = AgendaInnerLinkContentModel.fromNode(node);
       // assert
+      expect(node, isA<Node>());
       expect(actualInnerLinkContent, contentModel);
     });
 
@@ -50,18 +50,19 @@ main() {
       final content = AgendaInnerLinkContentModel.fromNode(node);
 
       // assert
+      expect(node, isA<Node>());
       expect(content.href, '');
     });
   });
 
   group('OuterLinkContentModel', () {
-    final actualOuterLinkContent = AgendaOuterLinkContentModel(href: '/?q=ne+vereyim+abime', text: 'ne vereyim abime');
+    final actualOuterLinkContent = AgendaOuterLinkContentModel(
+        href: '/?q=ne+vereyim+abime', text: 'ne vereyim abime');
 
     test('should be a content', () {
       // assert
       expect(actualOuterLinkContent, isA<Content>());
     });
-
 
     test(
         'should return valid AgendaOuterLinkContentModel when call fromNode method',
@@ -71,6 +72,7 @@ main() {
       // act
       final contentModel = AgendaOuterLinkContentModel.fromNode(node);
       // assert
+      expect(node, isA<Node>());
       expect(actualOuterLinkContent, contentModel);
     });
 
@@ -85,21 +87,36 @@ main() {
       final content = AgendaOuterLinkContentModel.fromNode(node);
 
       // assert
+      expect(node, isA<Node>());
       expect(content.href, '');
     });
-
-
-    
   });
 
   group('TextContentModel', () {
     final content = AgendaTextContentModel(
-      text: 'linzk',
+      text:
+          '3. istedikleri yazılımı bulamadılar ya da çok pahalı olduğunu düşündüler',
     );
 
     test('should be a content', () {
       // assert
       expect(content, isA<Content>());
+    });
+
+    test('should return AgendaTextContentModel when call fromNode method', () {
+      // arrange
+      final doc = fixture('text_content.html');
+      final textNode =
+          doc.body!.nodes.firstWhere((n) => n.nodeType == Node.TEXT_NODE);
+
+
+
+      // act
+      final model = AgendaTextContentModel.fromNode(textNode);
+
+      // assert
+      expect(textNode, isA<Node>());
+      expect(content, model);
     });
   });
 

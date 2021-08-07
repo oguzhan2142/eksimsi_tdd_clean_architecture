@@ -28,6 +28,16 @@ class AgendaTextContentModel extends TextContent {
   }) : super(
           text: text,
         );
+
+  factory AgendaTextContentModel.fromNode(Node node) {
+    late final text;
+    if (node.text != null) {
+      text = node.text;
+    } else {
+      text = '';
+    }
+    return AgendaTextContentModel(text: text);
+  }
 }
 
 class AgendaInnerLinkContentModel extends InnerLinkContent {
@@ -61,8 +71,6 @@ class AgendaOuterLinkContentModel extends OuterLinkContent {
     final href = node.attributes['href'] == null ? '' : node.attributes['href'];
 
     final text = node.text != null ? node.text!.trim() : '';
-
-
 
     return AgendaOuterLinkContentModel(href: href!, text: text);
   }
