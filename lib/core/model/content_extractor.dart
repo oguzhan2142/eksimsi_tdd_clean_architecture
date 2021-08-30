@@ -16,6 +16,7 @@ class ContentExtractor {
   var _lastSpoilerContents;
   final _contents = <Content>[];
   int _index = -1;
+  bool _firstSpoilerPassed = false;
 
   List<Content> extract(NodeList nodeList) {
     for (var node in nodeList) {
@@ -29,9 +30,10 @@ class ContentExtractor {
         if (_isFirstNodeAfterSpoilerHead(nodeList)) {
           _lastSpoilerContents = <Content>[];
           _contents.add(SpoilerContent(contents: _lastSpoilerContents));
+          _firstSpoilerPassed = true;
         }
 
-        if (_isLastSpoilerHeaderNode(nodeList)) {
+        if (_isLastSpoilerHeaderNode(nodeList) && _firstSpoilerPassed) {
           _isExtractingSpoilerContent = false;
         }
       }
@@ -60,14 +62,15 @@ class ContentExtractor {
       }
     }
   }
-void _extractBrContent(Element elementNode) {
 
-  _addModelList(BrContent());
-}
+  void _extractBrContent(Element elementNode) {
+    _addModelList(BrContent());
+  }
+
   void _extractTextContent(Node node) {
     if (node.text == null) return;
 
-    final model = AgendaTextContentModel(text: node.text!.trim());
+    final model = TextContent(text: node.text!.trim());
 
     _addModelList(model);
   }
@@ -79,7 +82,6 @@ void _extractBrContent(Element elementNode) {
     }
 
     href = node.attributes['href'];
-
 
     final model = OuterLinkContent(href: href, text: node.text.trim());
 
@@ -153,6 +155,4 @@ void _extractBrContent(Element elementNode) {
 
     return false;
   }
-
-  
 }

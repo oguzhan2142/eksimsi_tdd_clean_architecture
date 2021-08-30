@@ -16,11 +16,12 @@ main() {
   });
 
   group('InnerLinkContentModel', () {
+  
     AgendaInnerLinkContentModel actualInnerLinkContent =
         AgendaInnerLinkContentModel(
             href:
-                'https://twitter.com/SiginmaciGundem/status/1423646917544796162?s=19',
-            text: 'kaynak.');
+                '/?q=ne+vereyim+abime',
+            text: 'ne vereyim abime');
 
     test('should be a content', () {
       // assert
@@ -57,7 +58,7 @@ main() {
 
   group('OuterLinkContentModel', () {
     final actualOuterLinkContent = AgendaOuterLinkContentModel(
-        href: '/?q=ne+vereyim+abime', text: 'ne vereyim abime');
+        href: 'https://twitter.com/SiginmaciGundem/status/1423646917544796162?s=19', text: 'kaynak.');
 
     test('should be a content', () {
       // assert
@@ -137,17 +138,14 @@ main() {
       }
       final nodes = doc.body!.nodes;
 
-      for (var i = 0; i < 3; i++) {
-        nodes.removeAt(0);
-        nodes.removeAt(nodes.length - 1);
-      }
-      // --- <a class="b" href="/?q=spoiler">spoiler</a> ---
+      
+
       // act
       final expected = AgendaSpoilerContentModel.fromNodeList(nodes);
 
       // assert
 
-      expect(10, expected.contents.length);
+      expect(13, expected.contents.length);
     });
   });
 }
