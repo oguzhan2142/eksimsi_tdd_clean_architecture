@@ -1,4 +1,5 @@
 import 'package:eksimsi_tdd_clean_architecture/core/model/base_content.dart';
+import 'package:eksimsi_tdd_clean_architecture/core/model/content_extractor.dart';
 
 import 'package:html/dom.dart';
 
@@ -20,6 +21,18 @@ class AgendaSpoilerContentModel extends SpoilerContent {
   }) : super(
           contents: contents,
         );
+
+  factory AgendaSpoilerContentModel.fromNodeList(NodeList nodeList) {
+
+    final contentExtractor = ContentExtractor();
+
+    contentExtractor.extract(nodeList);
+
+
+ 
+
+    return AgendaSpoilerContentModel(contents: contentExtractor.contents);
+  }
 }
 
 class AgendaTextContentModel extends TextContent {

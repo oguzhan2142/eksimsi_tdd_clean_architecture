@@ -109,8 +109,6 @@ main() {
       final textNode =
           doc.body!.nodes.firstWhere((n) => n.nodeType == Node.TEXT_NODE);
 
-
-
       // act
       final model = AgendaTextContentModel.fromNode(textNode);
 
@@ -129,6 +127,27 @@ main() {
     test('should be a content', () {
       // assert
       expect(content, isA<Content>());
+    });
+
+    test('should return SpoilerContentModel when call fromNodeList method', () {
+      // arrange
+      final doc = fixture('spoiler_content.html');
+      if (doc.body == null) {
+        throw NullThrownError();
+      }
+      final nodes = doc.body!.nodes;
+
+      for (var i = 0; i < 3; i++) {
+        nodes.removeAt(0);
+        nodes.removeAt(nodes.length - 1);
+      }
+      // --- <a class="b" href="/?q=spoiler">spoiler</a> ---
+      // act
+      final expected = AgendaSpoilerContentModel.fromNodeList(nodes);
+
+      // assert
+
+      expect(10, expected.contents.length);
     });
   });
 }

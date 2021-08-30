@@ -35,6 +35,7 @@ class AgendaEntryModel extends AgendaEntry {
             if (node.attributes['href'] == null) {
               break;
             }
+
             href = node.attributes['href'];
 
             final text = node.text != null ? node.text!.trim() : '';
