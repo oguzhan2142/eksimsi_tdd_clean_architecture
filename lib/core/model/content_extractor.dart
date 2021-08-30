@@ -14,33 +14,35 @@ class ContentExtractor {
   bool _isExtractingSpoilerContent = false;
 
   var _lastSpoilerContents;
-  final contents = <Content>[];
+  final _contents = <Content>[];
   int _index = -1;
 
-  void extract(NodeList nodeList) {
+  List<Content> extract(NodeList nodeList) {
     for (var node in nodeList) {
       _index++;
 
-      if (isNextThreeNodePartOfSpoilerContentHead(nodeList)) {
+      if (_isNextThreeNodePartOfSpoilerContentHead(nodeList)) {
         _isExtractingSpoilerContent = true;
       }
 
       if (_isExtractingSpoilerContent) {
         if (_isFirstNodeAfterSpoilerHead(nodeList)) {
           _lastSpoilerContents = <Content>[];
-          contents.add(SpoilerContent(contents: _lastSpoilerContents));
+          _contents.add(SpoilerContent(contents: _lastSpoilerContents));
         }
 
-        if (isLastSpoilerHeaderNode(nodeList)) {
+        if (_isLastSpoilerHeaderNode(nodeList)) {
           _isExtractingSpoilerContent = false;
         }
       }
 
-      if (isOneOfSpoilerHeader(nodeList)) {
+      if (_isOneOfSpoilerHeader(nodeList)) {
         continue;
       }
       _extractCurrentNode(node);
     }
+
+    return _contents;
   }
 
   void _extractCurrentNode(Node node) {
@@ -100,11 +102,11 @@ void _extractBrContent(Element elementNode) {
     if (_isExtractingSpoilerContent) {
       _lastSpoilerContents.add(model);
     } else {
-      contents.add(model);
+      _contents.add(model);
     }
   }
 
-  bool isNextThreeNodePartOfSpoilerContentHead(NodeList list) {
+  bool _isNextThreeNodePartOfSpoilerContentHead(NodeList list) {
     if (_index + 3 > list.length) {
       return false;
     }
@@ -127,7 +129,7 @@ void _extractBrContent(Element elementNode) {
     return firstOk && secondOk && thirdOk;
   }
 
-  bool isLastSpoilerHeaderNode(NodeList list) {
+  bool _isLastSpoilerHeaderNode(NodeList list) {
     if (list.length < 3) {
       return false;
     }
@@ -141,7 +143,7 @@ void _extractBrContent(Element elementNode) {
     return firstOk && secondOk && thirdOk;
   }
 
-  bool isOneOfSpoilerHeader(NodeList nodeList) {
+  bool _isOneOfSpoilerHeader(NodeList nodeList) {
     if (nodeList.isEmpty) return false;
 
     final nodeText = nodeList[_index].text!.trim();

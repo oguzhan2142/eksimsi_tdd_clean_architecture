@@ -26,12 +26,12 @@ class AgendaSpoilerContentModel extends SpoilerContent {
 
     final contentExtractor = ContentExtractor();
 
-    contentExtractor.extract(nodeList);
+    final contents = contentExtractor.extract(nodeList);
 
 
  
 
-    return AgendaSpoilerContentModel(contents: contentExtractor.contents);
+    return AgendaSpoilerContentModel(contents:contents);
   }
 }
 
