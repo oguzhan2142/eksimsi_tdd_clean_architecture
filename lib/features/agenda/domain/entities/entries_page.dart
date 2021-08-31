@@ -3,8 +3,8 @@ import 'package:eksimsi_tdd_clean_architecture/core/model/show_all.dart';
 
 import 'agenda_entry.dart';
 
-class AgendaEntriesPage extends BaseEntriesPage {
-  AgendaEntriesPage({
+class EntriesPage extends BaseEntriesPage {
+  EntriesPage({
     required int page,
     required int totalPage,
     required String allHref,

@@ -16,7 +16,7 @@ main() {
   late final GetAgendaEntriesPage useCase =
       GetAgendaEntriesPage(mockAgendaRepository);
 
-  final AgendaEntriesPage agendaEntriesPage = AgendaEntriesPage(
+  final EntriesPage agendaEntriesPage = EntriesPage(
     page: 1,
     totalPage: 2,
     allHref: 'jref',
@@ -26,8 +26,8 @@ main() {
     entries: [],
   );
 
-  final AgendaEntriesPage agendaEntriesPageWithWrongPageNumber =
-      AgendaEntriesPage(
+  final EntriesPage agendaEntriesPageWithWrongPageNumber =
+      EntriesPage(
     page: 1,
     totalPage: 2,
     allHref: 'jref',
@@ -37,8 +37,8 @@ main() {
     entries: [],
   );
 
-  Future<Either<Failure, AgendaEntriesPage>> _arrangeAndAct(
-    AgendaEntriesPage data,
+  Future<Either<Failure, EntriesPage>> _arrangeAndAct(
+    EntriesPage data,
   ) async {
     // arrange
     when(mockAgendaRepository.getAgendaEntriesPage())

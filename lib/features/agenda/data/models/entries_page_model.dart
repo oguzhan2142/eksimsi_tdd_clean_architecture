@@ -2,7 +2,7 @@ import 'package:eksimsi_tdd_clean_architecture/core/model/show_all.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/data/models/entry_model.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/entities/entries_page.dart';
 
-class AgendaEntriesPageModel extends AgendaEntriesPage {
+class AgendaEntriesPageModel extends EntriesPage {
   AgendaEntriesPageModel({
     required String allHref,
     required String header,
