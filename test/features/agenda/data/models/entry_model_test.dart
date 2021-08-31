@@ -1,5 +1,5 @@
-import 'package:eksimsi_tdd_clean_architecture/core/model/base_content.dart';
-import 'package:eksimsi_tdd_clean_architecture/features/agenda/data/models/agenda_entry_model.dart';
+import 'package:eksimsi_tdd_clean_architecture/features/agenda/data/models/contents.dart';
+import 'package:eksimsi_tdd_clean_architecture/features/agenda/data/models/entry_model.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/entities/agenda_entry.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:html/dom.dart';
@@ -7,11 +7,11 @@ import 'package:html/dom.dart';
 import '../../../../fixtures/fixture_reader.dart';
 
 void main() {
-  late AgendaEntryModel model;
+  late EntryModel model;
   setUp(() {
     Document document = fixture('agenda_model.html');
     Element liTag = document.getElementsByTagName('li').first;
-    model = AgendaEntryModel.fromLiTag(liTag);
+    model = EntryModel.fromLiTag(liTag);
   });
 
   test('should subclass of AgendaEntry', () async {

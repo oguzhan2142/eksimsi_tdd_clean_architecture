@@ -1,11 +1,11 @@
 import 'package:eksimsi_tdd_clean_architecture/core/model/base_content.dart';
 import 'package:eksimsi_tdd_clean_architecture/core/model/content_extractor.dart';
-import 'package:eksimsi_tdd_clean_architecture/features/agenda/data/models/agenda_content_model.dart';
+
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/entities/agenda_entry.dart';
 import 'package:html/dom.dart';
 
-class AgendaEntryModel extends AgendaEntry {
-  AgendaEntryModel({
+class EntryModel extends AgendaEntry {
+  EntryModel({
     required String author,
     required List<Content> agendaContents,
     required String date,
@@ -19,7 +19,7 @@ class AgendaEntryModel extends AgendaEntry {
           favouriteCount: favouriteCount,
         );
 
-  factory AgendaEntryModel.fromLiTag(Element liTag) {
+  factory EntryModel.fromLiTag(Element liTag) {
     final extractor = ContentExtractor();
     final contentsDiv = liTag.getElementsByClassName('content content-expanded').first;
     final contents = extractor.extract(contentsDiv.nodes);
@@ -30,7 +30,7 @@ class AgendaEntryModel extends AgendaEntry {
     final date =
         liTag.getElementsByClassName('entry-date permalink').first.text;
 
-    return AgendaEntryModel(
+    return EntryModel(
       author: author,
       agendaContents: contents,
       date: date,
