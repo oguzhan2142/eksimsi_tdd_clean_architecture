@@ -26,25 +26,16 @@ main() {
     entries: [],
   );
 
-  final EntriesPage agendaEntriesPageWithWrongPageNumber =
-      EntriesPage(
-    page: 1,
-    totalPage: 2,
-    allHref: 'jref',
-    header: 'test header',
-    showAll: null,
-    todayHref: 'todayHref',
-    entries: [],
-  );
+
 
   Future<Either<Failure, EntriesPage>> _arrangeAndAct(
     EntriesPage data,
   ) async {
     // arrange
-    when(mockAgendaRepository.getAgendaEntriesPage())
+    when(mockAgendaRepository.getAgendaEntriesPage(any))
         .thenAnswer((_) async => Right(agendaEntriesPage));
     // act
-    final result = await useCase.call(NoParams());
+    final result = await useCase.call(Params(url: ''));
     return result;
   }
 
@@ -52,7 +43,7 @@ main() {
     final result = await _arrangeAndAct(agendaEntriesPage);
     // assert
     expect(result, Right(agendaEntriesPage));
-    verify(mockAgendaRepository.getAgendaEntriesPage());
+    verify(mockAgendaRepository.getAgendaEntriesPage(any));
     verifyNoMoreInteractions(mockAgendaRepository);
   });
 

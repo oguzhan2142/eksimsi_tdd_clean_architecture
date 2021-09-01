@@ -18,9 +18,9 @@ class AgendaRepositoryImp extends AgendaRepository {
   });
 
   @override
-  Future<Either<Failure, EntriesPage>> getAgendaEntriesPage() async {
+  Future<Either<Failure, EntriesPage>> getAgendaEntriesPage(String url) async {
     networkInfo.isConnected;
-    return Right(await agendaRepositoryRemoteDataSource.getAgendaEntriesPage());
+    return Right(await agendaRepositoryRemoteDataSource.getAgendaEntriesPage(url));
   }
 
   @override

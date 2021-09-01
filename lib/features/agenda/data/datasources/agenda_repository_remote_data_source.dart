@@ -1,13 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:eksimsi_tdd_clean_architecture/core/error/exception.dart';
-import 'package:eksimsi_tdd_clean_architecture/features/agenda/data/models/entries_page_model.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/data/models/agenda_header_model.dart';
-import 'package:flutter/foundation.dart';
-import 'package:html/dom.dart';
+import 'package:eksimsi_tdd_clean_architecture/features/agenda/data/models/entries_page_model.dart';
 import 'package:html/parser.dart';
 
 abstract class AgendaRepositoryRemoteDataSource {
-  Future<AgendaEntriesPageModel> getAgendaEntriesPage();
+  Future<AgendaEntriesPageModel> getAgendaEntriesPage(String url);
 
   Future<List<AgendaHeaderModel>> getAgendaHeaders();
 }
@@ -19,7 +17,7 @@ class AgendaRepositoryRemoteDataSourceImpl
   AgendaRepositoryRemoteDataSourceImpl({required this.client});
 
   @override
-  Future<AgendaEntriesPageModel> getAgendaEntriesPage() async {
+  Future<AgendaEntriesPageModel> getAgendaEntriesPage(String url) async {
     await client.get('https://eksisozluk.com/basliklar/gundem');
     return Future<AgendaEntriesPageModel>.value();
   }
