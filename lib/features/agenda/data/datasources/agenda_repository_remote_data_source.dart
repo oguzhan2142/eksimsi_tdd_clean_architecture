@@ -16,11 +16,15 @@ class AgendaRepositoryRemoteDataSourceImpl
 
   AgendaRepositoryRemoteDataSourceImpl({required this.client});
 
+
+
   @override
   Future<AgendaEntriesPageModel> getAgendaEntriesPage(String url) async {
     await client.get('https://eksisozluk.com/basliklar/gundem');
     return Future<AgendaEntriesPageModel>.value();
   }
+
+
 
   @override
   Future<List<AgendaHeaderModel>> getAgendaHeaders() async {

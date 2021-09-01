@@ -19,6 +19,27 @@ main() {
     remoteDataSource = AgendaRepositoryRemoteDataSourceImpl(client: mockDio);
   });
 
+  group('getAgendaEntriesModel', () {
+    
+    test('should return AgendaEntriesModel when status code is 200', () {
+    // arrange 
+    // act
+    // assert
+    });
+
+
+
+    test('should throws ServerException when status code is not 200', () {
+    // arrange 
+    // act
+    // assert
+    });
+    
+
+
+  });
+
+
   group('getAgendaHeaders', () {
 
     final agendaPageUrl = 'https://eksisozluk.com/basliklar/gundem';
