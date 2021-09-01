@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:eksimsi_tdd_clean_architecture/core/error/exception.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/data/datasources/agenda_repository_remote_data_source.dart';
-import 'package:eksimsi_tdd_clean_architecture/features/agenda/data/models/agenda_header_model.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -13,61 +12,64 @@ import 'agenda_repository_remote_data_source_test.mocks.dart';
 main() {
   late MockDio mockDio;
   late AgendaRepositoryRemoteDataSourceImpl remoteDataSource;
-  final agendaPageUrl = 'https://eksisozluk.com/basliklar/gundem';
+  
 
   setUp(() {
     mockDio = MockDio();
-
     remoteDataSource = AgendaRepositoryRemoteDataSourceImpl(client: mockDio);
   });
 
-  test('should send get request to https://eksisozluk.com/basliklar/gundem',
-      () async {
-    // arrange
-    when(mockDio.get(any)).thenAnswer(
-      (_) async => Response(
-        data: fixtureAsString('gundem.html'),
-        statusCode: 200,
-        requestOptions: RequestOptions(path: agendaPageUrl),
-      ),
-    );
+  group('getAgendaHeaders', () {
 
-    // act
-    await remoteDataSource.getAgendaHeaders();
+    final agendaPageUrl = 'https://eksisozluk.com/basliklar/gundem';
 
-    // assert
-    verify(mockDio.get(agendaPageUrl));
-  });
+    void _setUpMockDioSuccessResponse() {
+      when(mockDio.get(any)).thenAnswer(
+        (_) async => Response(
+          requestOptions: RequestOptions(path: agendaPageUrl),
+          statusCode: 200,
+          data: fixtureAsString('gundem.html'),
+        ),
+      );
+    }
 
-  test('should return list of AgendaHeaderModels when response code is 200',
-      () async {
-    // arrange
-    when(mockDio.get(any)).thenAnswer(
-      (_) async => Response(
-        requestOptions: RequestOptions(path: agendaPageUrl),
-        statusCode: 200,
-        data: fixtureAsString('gundem.html'),
-      ),
-    );
-    // act
-    final models = await remoteDataSource.getAgendaHeaders();
+    test('should send get request to https://eksisozluk.com/basliklar/gundem',
+        () async {
+      // arrange
+      _setUpMockDioSuccessResponse();
 
-    // assert
-    expect(models, isNotEmpty);
-  });
+      // act
+      await remoteDataSource.getAgendaHeaders();
 
-  test('should throw server exception when status code is not 200', () {
-    // arrange
-    when(mockDio.get(any)).thenAnswer(
-      (_) async => Response(
-        requestOptions: RequestOptions(path: agendaPageUrl),
-        statusCode: 404,
-      ),
-    );
+      // assert
+      verify(mockDio.get(agendaPageUrl));
+    });
 
-    // act
-    final call = remoteDataSource.getAgendaHeaders;
-    // assert
-    expect(() => call(), throwsA(TypeMatcher<ServerException>()));
+    test('should return list of AgendaHeaderModels when response code is 200',
+        () async {
+      // arrange
+      _setUpMockDioSuccessResponse();
+
+      // act
+      final models = await remoteDataSource.getAgendaHeaders();
+
+      // assert
+      expect(models, isNotEmpty);
+    });
+
+    test('should throw server exception when status code is not 200', () {
+      // arrange
+      when(mockDio.get(any)).thenAnswer(
+        (_) async => Response(
+          requestOptions: RequestOptions(path: agendaPageUrl),
+          statusCode: 404,
+        ),
+      );
+
+      // act
+      final call = remoteDataSource.getAgendaHeaders;
+      // assert
+      expect(() => call(), throwsA(TypeMatcher<ServerException>()));
+    });
   });
 }
