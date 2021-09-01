@@ -1,7 +1,7 @@
 import 'package:eksimsi_tdd_clean_architecture/core/model/base_entries_page.dart';
 import 'package:eksimsi_tdd_clean_architecture/core/model/show_all.dart';
 
-import 'agenda_entry.dart';
+import 'entry.dart';
 
 class EntriesPage extends BaseEntriesPage {
   EntriesPage({
@@ -11,7 +11,7 @@ class EntriesPage extends BaseEntriesPage {
     required String header,
     required ShowAll? showAll,
     required String todayHref,
-    required List<AgendaEntry> entries,
+    required List<Entry> entries,
   }) : super(
           page: page,
           totalPage: totalPage,

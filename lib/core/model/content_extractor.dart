@@ -1,6 +1,6 @@
 import 'package:eksimsi_tdd_clean_architecture/core/model/base_content.dart';
 
-import 'package:eksimsi_tdd_clean_architecture/features/agenda/data/models/contents.dart';
+import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/entities/contents.dart';
 import 'package:html/dom.dart';
 
 /* 

@@ -20,7 +20,7 @@ main() {
 
   test('should return valid model when passing </li> element', () {
     // arrange
-    final document = fixture('agenda_header_fixture.html');
+    final document = fixtureAsDocument('agenda_header_fixture.html');
     final liTag = document.getElementsByTagName('li').first;
 
     // act

@@ -2,9 +2,14 @@ import 'dart:io';
 
 import 'package:html/dom.dart';
 
-Document fixture(String name) {
-  final file = File('test/fixtures/$name').readAsStringSync();
+Document fixtureAsDocument(String name) {
+  final source = fixtureAsString(name);
 
-  return Document.html(file);
+  return Document.html(source);
 
+}
+
+
+String fixtureAsString(String name){
+  return File('test/fixtures/$name').readAsStringSync();
 }

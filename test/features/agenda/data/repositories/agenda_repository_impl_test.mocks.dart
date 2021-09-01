@@ -8,10 +8,10 @@ import 'package:eksimsi_tdd_clean_architecture/core/platform/network_info.dart'
     as _i6;
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/data/datasources/agenda_repository_remote_data_source.dart'
     as _i3;
-import 'package:eksimsi_tdd_clean_architecture/features/agenda/data/models/entries_page_model.dart'
-    as _i2;
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/data/models/agenda_header_model.dart'
     as _i5;
+import 'package:eksimsi_tdd_clean_architecture/features/agenda/data/models/entries_page_model.dart'
+    as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: avoid_redundant_argument_values

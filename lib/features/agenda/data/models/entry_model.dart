@@ -1,10 +1,10 @@
 import 'package:eksimsi_tdd_clean_architecture/core/model/base_content.dart';
 import 'package:eksimsi_tdd_clean_architecture/core/model/content_extractor.dart';
 
-import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/entities/agenda_entry.dart';
+import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/entities/entry.dart';
 import 'package:html/dom.dart';
 
-class EntryModel extends AgendaEntry {
+class EntryModel extends Entry {
   EntryModel({
     required String author,
     required List<Content> agendaContents,

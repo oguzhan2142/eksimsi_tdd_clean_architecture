@@ -1,5 +1,5 @@
 import 'package:eksimsi_tdd_clean_architecture/core/model/content_extractor.dart';
-import 'package:eksimsi_tdd_clean_architecture/features/agenda/data/models/contents.dart';
+import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/entities/contents.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:html/dom.dart';
 
@@ -16,7 +16,7 @@ void main() {
     late Document textDocument;
 
     setUp(() {
-      textDocument = fixture('text_content.html');
+      textDocument = fixtureAsDocument('text_content.html');
     });
 
     test('should return only one TextContent when use text_content.html', () {
@@ -55,8 +55,8 @@ void main() {
     late Document innerLinkDocument;
     late Document outerLinkDocument;
     setUp(() {
-      outerLinkDocument = fixture('outer_link_content.html');
-      innerLinkDocument = fixture('inner_link_content.html');
+      outerLinkDocument = fixtureAsDocument('outer_link_content.html');
+      innerLinkDocument = fixtureAsDocument('inner_link_content.html');
     });
     test(
         'should return only one innerLinkContent when use inner_link_content.html file',
@@ -96,7 +96,7 @@ void main() {
   group('for spoiler content', () {
     late NodeList nodeListOnlyContainsSpoilerContent;
     setUp(() {
-      final spoilerDocument = fixture('spoiler_content.html');
+      final spoilerDocument = fixtureAsDocument('spoiler_content.html');
 
       nodeListOnlyContainsSpoilerContent =
           spoilerDocument.getElementsByTagName('body').first.nodes;

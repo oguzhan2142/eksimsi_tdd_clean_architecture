@@ -1,8 +1,8 @@
 import 'package:eksimsi_tdd_clean_architecture/core/model/base_content.dart';
 import 'package:eksimsi_tdd_clean_architecture/core/model/base_entry.dart';
 
-class AgendaEntry extends BaseEntry {
-  AgendaEntry({
+class Entry extends BaseEntry {
+  Entry({
     required final String author,
     required final List<Content> contents,
     required final String date,
