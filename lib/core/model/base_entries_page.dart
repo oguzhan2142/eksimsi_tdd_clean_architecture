@@ -4,8 +4,8 @@ import 'base_entry.dart';
 import 'show_all.dart';
 
 abstract class BaseEntriesPage extends Equatable {
-  final int page;
-  final int totalPage;
+  final int? page;
+  final int? totalPage;
   final String header;
   final String allHref;
   final String todayHref;

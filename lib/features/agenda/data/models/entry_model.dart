@@ -1,5 +1,5 @@
 import 'package:eksimsi_tdd_clean_architecture/core/model/base_content.dart';
-import 'package:eksimsi_tdd_clean_architecture/core/model/content_extractor.dart';
+import 'package:eksimsi_tdd_clean_architecture/core/extractors/content_extractor.dart';
 
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/entities/entry.dart';
 import 'package:html/dom.dart';
@@ -21,7 +21,7 @@ class EntryModel extends Entry {
 
   factory EntryModel.fromLiTag(Element liTag) {
     final extractor = ContentExtractor();
-    final contentsDiv = liTag.getElementsByClassName('content content-expanded').first;
+    final contentsDiv = liTag.getElementsByClassName('content').first;
     final contents = extractor.extract(contentsDiv.nodes);
 
     final id = liTag.attributes['data-id'] ?? '';

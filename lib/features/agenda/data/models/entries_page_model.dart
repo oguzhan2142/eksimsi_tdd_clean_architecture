@@ -1,4 +1,6 @@
-
+import 'package:eksimsi_tdd_clean_architecture/core/error/exception.dart';
+import 'package:eksimsi_tdd_clean_architecture/core/extractors/content_extractor.dart';
+import 'package:eksimsi_tdd_clean_architecture/core/extractors/entry_page_extractor.dart';
 import 'package:eksimsi_tdd_clean_architecture/core/model/show_all.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/data/models/entry_model.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/entities/entries_page.dart';
@@ -9,8 +11,8 @@ class AgendaEntriesPageModel extends EntriesPage {
     required String allHref,
     required String todayHref,
     required String header,
-    required int page,
-    required int totalPage,
+    required int? page,
+    required int? totalPage,
     required List<EntryModel> entires,
     required ShowAll? showAll,
   }) : super(
@@ -24,16 +26,24 @@ class AgendaEntriesPageModel extends EntriesPage {
         );
 
   factory AgendaEntriesPageModel.fromBody(Element body) {
-    // throw ServerException();
+    final extractor = EntryPageExtractor(body: body);
+
+    int? page = extractor.extractCurrentPage();
+    int? totalPage = extractor.extractTotalPage();
+    String? allHref = extractor.extractAllHref();
+    String? todayHref = extractor.extractTodayHref();
+    String header = extractor.extractHeader();
+    final entries = extractor.extractEntries();
+    ShowAll showAll = extractor.extractShowAll();
 
     return AgendaEntriesPageModel(
-      allHref: '',
-      showAll: null,
-      entires: [],
-      header: '',
-      page: 0,
-      todayHref: '',
-      totalPage: 1,
+      allHref: allHref,
+      showAll: showAll,
+      entires: entries,
+      header: header,
+      page: page,
+      todayHref: todayHref,
+      totalPage: totalPage,
     );
   }
 }

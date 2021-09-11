@@ -5,8 +5,8 @@ import 'entry.dart';
 
 class EntriesPage extends BaseEntriesPage {
   EntriesPage({
-    required int page,
-    required int totalPage,
+    required int? page,
+    required int? totalPage,
     required String allHref,
     required String header,
     required ShowAll? showAll,
