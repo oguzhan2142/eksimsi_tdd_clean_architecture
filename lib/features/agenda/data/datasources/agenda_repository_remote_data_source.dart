@@ -16,15 +16,23 @@ class AgendaRepositoryRemoteDataSourceImpl
 
   AgendaRepositoryRemoteDataSourceImpl({required this.client});
 
-
-
   @override
   Future<AgendaEntriesPageModel> getAgendaEntriesPage(String url) async {
-    await client.get('https://eksisozluk.com/basliklar/gundem');
-    return Future<AgendaEntriesPageModel>.value();
+    final response =
+        await client.get('https://eksisozluk.com/basliklar/gundem');
+    if (response.statusCode != 200) {
+      throw ServerException();
+    }
+
+    final document = parse(response.data);
+    final body = document.body;
+
+    if (body == null) {
+      throw ServerException();
+    }
+
+    return AgendaEntriesPageModel.fromBody(body);
   }
-
-
 
   @override
   Future<List<AgendaHeaderModel>> getAgendaHeaders() async {
