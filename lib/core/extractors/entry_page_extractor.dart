@@ -72,8 +72,27 @@ class EntryPageExtractor {
     return entries;
   }
 
-  ShowAll extractShowAll() {
-    return ShowAll(href: '', text: '');
+  ShowAll? extractShowAll() {
+    final nodesWithClassNameShowAll = body.getElementsByClassName('showall');
+
+    try {
+      final result = nodesWithClassNameShowAll.firstWhere(
+          (element) => element.attributes['title'] == 'tümünü göster');
+      final href = result.attributes['href'];
+
+      if (href == null) {
+        return null;
+      }
+
+      if (href.isEmpty) {
+        return null;
+      }
+      final label = result.text;
+
+      return ShowAll(href: href, text: label);
+    } on StateError {
+      return null;
+    }
   }
 
   String _extractNiceHref(String elementText) {

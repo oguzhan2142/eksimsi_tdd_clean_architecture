@@ -1,5 +1,3 @@
-import 'package:eksimsi_tdd_clean_architecture/core/error/exception.dart';
-import 'package:eksimsi_tdd_clean_architecture/core/extractors/content_extractor.dart';
 import 'package:eksimsi_tdd_clean_architecture/core/extractors/entry_page_extractor.dart';
 import 'package:eksimsi_tdd_clean_architecture/core/model/show_all.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/data/models/entry_model.dart';
@@ -34,7 +32,7 @@ class AgendaEntriesPageModel extends EntriesPage {
     String? todayHref = extractor.extractTodayHref();
     String header = extractor.extractHeader();
     final entries = extractor.extractEntries();
-    ShowAll showAll = extractor.extractShowAll();
+    ShowAll? showAll = extractor.extractShowAll();
 
     return AgendaEntriesPageModel(
       allHref: allHref,
