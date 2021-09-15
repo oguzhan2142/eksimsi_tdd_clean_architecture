@@ -64,7 +64,7 @@ main() {
 
       final expected = [
         GetEntryPageInProgress(),
-        GetEntryPageFailed(message: SERVER_ERROR_MESSAGE),
+        GetEntryPageFailed(message: ENTRIES_PAGE_ERROR_MESSAGE),
       ];
       // assert
       expectLater(bloc.stream, emitsInOrder(expected));
