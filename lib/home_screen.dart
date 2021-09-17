@@ -2,6 +2,7 @@ import 'package:eksimsi_tdd_clean_architecture/core/pages/channels_tab.dart';
 import 'package:eksimsi_tdd_clean_architecture/core/pages/profile_tab.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
 
@@ -46,7 +47,13 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             FlutterLogo(),
             SizedBox(width: 10),
-            Text('Ekşimsi'),
+            Text(
+              'Ekşimsi',
+              style: GoogleFonts.montserrat(
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
           ],
         ),
         centerTitle: false,
