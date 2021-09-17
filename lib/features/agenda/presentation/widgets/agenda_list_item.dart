@@ -19,19 +19,25 @@ class AgendaListItem extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  agendaHeader.title,
-                  style: GoogleFonts.montserrat(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w500,
+            Expanded(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    agendaHeader.title,
+                    maxLines: 2,
+                    style: GoogleFonts.montserrat(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
+            ),
+            SizedBox(
+              width: 10,
             ),
             Container(
               padding: EdgeInsets.all(8),

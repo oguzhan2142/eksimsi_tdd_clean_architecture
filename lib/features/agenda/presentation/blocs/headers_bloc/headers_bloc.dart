@@ -45,7 +45,5 @@ class HeadersBloc extends Bloc<HeadersEvent, HeadersState> {
       },
       (r) => GetAgendaHeadersCompleted(headers: r),
     );
-
-    yield GetAgendaHeadersFailed(message: NO_INTERNET_MESSAGE);
   }
 }

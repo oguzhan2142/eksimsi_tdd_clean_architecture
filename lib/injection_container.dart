@@ -1,4 +1,5 @@
 import 'package:connectivity/connectivity.dart';
+import 'package:dio/dio.dart';
 import 'package:eksimsi_tdd_clean_architecture/core/platform/network_info.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/data/datasources/agenda_repository_remote_data_source.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/data/repositories/agenda_repository_impl.dart';
@@ -27,7 +28,7 @@ void init() {
       () => AgendaRepositoryRemoteDataSourceImpl(client: sl()));
 
   // Core
-
+  sl.registerLazySingleton<Dio>(() => Dio());
   sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(sl()));
 
   // External
