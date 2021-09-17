@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ArchivePage extends StatelessWidget {
-  const ArchivePage({Key? key}) : super(key: key);
+class ArchiveTab extends StatelessWidget {
+  const ArchiveTab({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

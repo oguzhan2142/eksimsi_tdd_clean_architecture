@@ -1,12 +1,13 @@
-import 'package:eksimsi_tdd_clean_architecture/core/pages/channels_page.dart';
-import 'package:eksimsi_tdd_clean_architecture/core/pages/profile_page.dart';
+import 'package:eksimsi_tdd_clean_architecture/core/pages/channels_tab.dart';
+import 'package:eksimsi_tdd_clean_architecture/core/pages/profile_tab.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
 
-import 'core/pages/archive_page.dart';
-import 'core/pages/agenda_page.dart';
-import 'core/pages/search_page.dart';
+import 'core/pages/archive_tab.dart';
+import 'core/pages/agenda_tab.dart';
+import 'core/pages/search_tab.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -21,11 +22,11 @@ class _HomeScreenState extends State<HomeScreen> {
   PageController controller = PageController();
 
   List<Widget> pages = [
-    AgendaPage(),
-    ChannelsPage(),
-    SearchPage(),
-    ArchivePage(),
-    ProfilePage(),
+    AgendaTab(),
+    ChannelsTab(),
+    SearchTab(),
+    ArchiveTab(),
+    ProfileTab(),
   ];
 
   void _tabChanged(int index) {
@@ -41,7 +42,22 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       extendBody: true,
       appBar: AppBar(
-        title: Text('Ekşimsi'),
+        title: Row(
+          children: [
+            FlutterLogo(),
+            SizedBox(width: 10),
+            Text('Ekşimsi'),
+          ],
+        ),
+        centerTitle: false,
+        actions: [
+          selectedIndex == pages.length - 1
+              ? IconButton(
+                  onPressed: () {},
+                  icon: Icon(CupertinoIcons.settings_solid),
+                )
+              : SizedBox(),
+        ],
       ),
       body: PageView.builder(
         controller: controller,
