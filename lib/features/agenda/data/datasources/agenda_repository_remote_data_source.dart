@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:eksimsi_tdd_clean_architecture/core/constants/remote_source_constants.dart';
 import 'package:eksimsi_tdd_clean_architecture/core/error/exception.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/data/models/agenda_header_model.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/data/models/entries_page_model.dart';
@@ -18,8 +19,8 @@ class AgendaRepositoryRemoteDataSourceImpl
   AgendaRepositoryRemoteDataSourceImpl({required this.client});
 
   @override
-  Future<AgendaEntriesPageModel> getAgendaEntriesPage(String url) async {
-    final response = await client.get(url);
+  Future<AgendaEntriesPageModel> getAgendaEntriesPage(String href) async {
+    final response = await client.get(EKSI_BASE_DOMAIN + href);
     if (response.statusCode != 200) {
       throw ServerException();
     }
@@ -36,7 +37,6 @@ class AgendaRepositoryRemoteDataSourceImpl
 
   @override
   Future<List<AgendaHeaderModel>> getAgendaHeaders() async {
-
     final response =
         await client.get('https://eksisozluk.com/basliklar/gundem');
 

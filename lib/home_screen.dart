@@ -93,14 +93,14 @@ class _HomeScreenState extends State<HomeScreen> {
               end: Alignment.bottomLeft,
               colors: [Colors.teal.shade100, Colors.teal.shade500],
             ),
-            gap: 10,
+            gap: 2,
             tabBorderRadius: 30,
             color: Colors.grey[600],
             activeColor: Colors.white,
             iconSize: 16,
             textStyle: TextStyle(fontSize: 12, color: Colors.white),
             tabBackgroundColor: Colors.grey[800]!,
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16.5),
+            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 16.5),
             duration: Duration(milliseconds: 800),
             tabs: [
               GButton(
