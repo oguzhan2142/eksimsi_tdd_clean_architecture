@@ -4,7 +4,6 @@ import 'package:eksimsi_tdd_clean_architecture/core/error/exception.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/data/models/agenda_header_model.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/data/models/entries_page_model.dart';
 import 'package:html/parser.dart';
-import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 abstract class AgendaRepositoryRemoteDataSource {
   Future<AgendaEntriesPageModel> getAgendaEntriesPage(String url);
@@ -20,7 +19,10 @@ class AgendaRepositoryRemoteDataSourceImpl
 
   @override
   Future<AgendaEntriesPageModel> getAgendaEntriesPage(String href) async {
-    final response = await client.get(EKSI_BASE_DOMAIN + href);
+    final response = await client.get(
+      EKSI_BASE_DOMAIN + href,
+      
+    );
     if (response.statusCode != 200) {
       throw ServerException();
     }

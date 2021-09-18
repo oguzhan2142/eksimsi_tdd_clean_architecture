@@ -3,6 +3,7 @@ import 'package:eksimsi_tdd_clean_architecture/core/constants/fonts.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/entities/entry.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/presentation/blocs/entry_page_bloc/entry_page_bloc.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/presentation/widgets/entry_list_item.dart';
+import 'package:eksimsi_tdd_clean_architecture/features/agenda/presentation/widgets/pagination_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -71,17 +72,32 @@ class _EntriesScreenState extends State<EntriesScreen> {
           }
 
           if (state is GetEntryPageCompleted) {
-            return RefreshIndicator(
-              onRefresh: () async {
-                entryPageBloc
-                    .add(GetEntryPageEvent(pageHref: widget.entryPageHref));
-              },
-              child: ListView.separated(
-                itemCount: state.entriesPage.entries.length,
-                padding: EdgeInsets.only(top: 20, bottom: 90),
-                separatorBuilder: (context, index) => SizedBox(height: 8),
-                itemBuilder: (context, index) => EntryListItem(
-                  entry: state.entriesPage.entries[index] as Entry,
+            return Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              child: RefreshIndicator(
+                onRefresh: () async {
+                  entryPageBloc
+                      .add(GetEntryPageEvent(pageHref: widget.entryPageHref));
+                },
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      SizedBox(height: 10),
+                      ListView.separated(
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: state.entriesPage.entries.length,
+                        separatorBuilder: (context, index) =>
+                            SizedBox(height: 5),
+                        itemBuilder: (context, index) => EntryListItem(
+                          entry: state.entriesPage.entries[index] as Entry,
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      PaginationWidget(),
+                      SizedBox(height: 30),
+                    ],
+                  ),
                 ),
               ),
             );

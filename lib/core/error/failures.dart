@@ -12,3 +12,10 @@ class NoInternetFailure extends Failure{
   @override
   List<Object?> get props => [];
 }
+
+class URIFailure extends Failure{
+  @override
+  List<Object?> get props => [];
+}
+
+
