@@ -1,12 +1,14 @@
 import 'package:dio/dio.dart';
 import 'package:eksimsi_tdd_clean_architecture/core/constants/remote_source_constants.dart';
 import 'package:eksimsi_tdd_clean_architecture/core/error/exception.dart';
+import 'package:eksimsi_tdd_clean_architecture/core/extractors/query_parameter_parser.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/data/models/agenda_header_model.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/data/models/entries_page_model.dart';
 import 'package:html/parser.dart';
 
 abstract class AgendaRepositoryRemoteDataSource {
-  Future<AgendaEntriesPageModel> getAgendaEntriesPage(String url);
+  Future<AgendaEntriesPageModel> getAgendaEntriesPage(
+      {required String href, int? page});
 
   Future<List<AgendaHeaderModel>> getAgendaHeaders();
 }
@@ -16,26 +18,6 @@ class AgendaRepositoryRemoteDataSourceImpl
   final Dio client;
 
   AgendaRepositoryRemoteDataSourceImpl({required this.client});
-
-  @override
-  Future<AgendaEntriesPageModel> getAgendaEntriesPage(String href) async {
-    final response = await client.get(
-      EKSI_BASE_DOMAIN + href,
-      
-    );
-    if (response.statusCode != 200) {
-      throw ServerException();
-    }
-
-    final document = parse(response.data);
-    final body = document.body;
-
-    if (body == null) {
-      throw ServerException();
-    }
-
-    return AgendaEntriesPageModel.fromBody(body);
-  }
 
   @override
   Future<List<AgendaHeaderModel>> getAgendaHeaders() async {
@@ -68,5 +50,31 @@ class AgendaRepositoryRemoteDataSourceImpl
     });
 
     return models;
+  }
+
+  @override
+  Future<AgendaEntriesPageModel> getAgendaEntriesPage(
+      {required String href, int? page}) async {
+    final url = EKSI_BASE_DOMAIN + href;
+
+    final parser = QueryParameterParser(url: url);
+
+    final response = await client.get(
+      EKSI_BASE_DOMAIN,
+      queryParameters: parser.parameters,
+    );
+
+    if (response.statusCode != 200) {
+      throw ServerException();
+    }
+
+    final document = parse(response.data);
+    final body = document.body;
+
+    if (body == null) {
+      throw ServerException();
+    }
+
+    return AgendaEntriesPageModel.fromBody(body);
   }
 }
