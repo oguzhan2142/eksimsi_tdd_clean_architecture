@@ -4,7 +4,6 @@ import 'package:flutter_test/flutter_test.dart';
 
 import '../../../../fixtures/fixture_reader.dart';
 
-
 main() {
   final agentaHeaderModel = AgendaHeaderModel(
     title: '4 ağustos 2021 a haber tayyip erdoğan canlı yayını',
@@ -43,7 +42,6 @@ main() {
     final result = agentaHeaderModel.toJson();
 
     // assert
-
     expect(expectedJson, result);
   });
 }

@@ -35,8 +35,11 @@ class MockAgendaRepositoryRemoteDataSource extends _i1.Mock
   }
 
   @override
-  _i4.Future<_i2.AgendaEntriesPageModel> getAgendaEntriesPage(String? url) =>
-      (super.noSuchMethod(Invocation.method(#getAgendaEntriesPage, [url]),
+  _i4.Future<_i2.AgendaEntriesPageModel> getAgendaEntriesPage(
+          {String? href, int? page}) =>
+      (super.noSuchMethod(
+              Invocation.method(
+                  #getAgendaEntriesPage, [], {#href: href, #page: page}),
               returnValue: Future<_i2.AgendaEntriesPageModel>.value(
                   _FakeAgendaEntriesPageModel_0()))
           as _i4.Future<_i2.AgendaEntriesPageModel>);

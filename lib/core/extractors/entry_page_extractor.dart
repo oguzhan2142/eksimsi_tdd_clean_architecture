@@ -1,3 +1,4 @@
+import 'package:dartz/dartz_unsafe.dart';
 import 'package:eksimsi_tdd_clean_architecture/core/error/exception.dart';
 import 'package:eksimsi_tdd_clean_architecture/core/model/show_all.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/data/models/entry_model.dart';
@@ -9,33 +10,46 @@ class EntryPageExtractor {
   EntryPageExtractor({required this.body});
 
   int? extractCurrentPage() {
-    Element pagerDiv = _getPagerDiv();
+    Element? pagerDiv = _getPagerDiv();
+
+    if (pagerDiv == null) {
+      return null;
+    }
+
     final currentPageStr = pagerDiv.attributes['data-currentpage'];
     int? page = currentPageStr != null ? int.parse(currentPageStr) : null;
     return page;
   }
 
   int? extractTotalPage() {
-    final dataPageCountStr = _getPagerDiv().attributes['data-pagecount'];
+    final pagerDiv = _getPagerDiv();
+    if (pagerDiv == null) return null;
+    final dataPageCountStr = pagerDiv.attributes['data-pagecount'];
     int? totalPage =
         dataPageCountStr != null ? int.parse(dataPageCountStr) : null;
     return totalPage;
   }
 
   String extractAllHref() {
-    try {
-      return _extractNiceHref('tümü');
-    } on StateError {
-      throw ServerException();
-    }
+    return _extractNiceHref('tümü');
   }
 
   String extractTodayHref() {
-    try {
-      return _extractNiceHref('bugün');
-    } on StateError {
+    return _extractNiceHref('bugün');
+  }
+
+  String extractHref() {
+    var selector = body.querySelector('#title > a');
+
+    if (selector == null) throw ServerException();
+
+    String? href = selector.attributes['href'];
+
+    if (href == null) {
       throw ServerException();
     }
+
+    return href;
   }
 
   String extractHeader() {
@@ -96,24 +110,22 @@ class EntryPageExtractor {
   }
 
   String _extractNiceHref(String elementText) {
-    final niceModeDiv = body.getElementsByClassName('nice-mode-toggler').first;
-    final aTags = niceModeDiv.getElementsByTagName('a');
+    var baseHref = extractHref();
 
-    try {
-      final todayATag =
-          aTags.firstWhere((element) => element.text.trim() == elementText);
-      if (todayATag.attributes['href'] == null) {
-        throw ServerException();
-      }
-
-      return todayATag.attributes['href']!;
-    } on StateError {
-      throw ServerException();
+    if (elementText == 'tümü') {
+      return baseHref + '?a=nice';
+    } else if (elementText == 'bugün') {
+      return baseHref + '?a=dailynice';
     }
+    return baseHref;
   }
 
-  Element _getPagerDiv() {
-    final pagerDiv = body.getElementsByClassName('pager').first;
-    return pagerDiv;
+  Element? _getPagerDiv() {
+    try {
+      final pagerDiv = body.getElementsByClassName('pager').first;
+      return pagerDiv;
+    } catch (e) {
+      return null;
+    }
   }
 }

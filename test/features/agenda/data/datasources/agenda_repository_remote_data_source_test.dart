@@ -15,7 +15,7 @@ main() {
   late AgendaRepositoryRemoteDataSourceImpl remoteDataSource;
 
   void _setUpMockDioSuccessResponse(String fixture, {String url = ''}) {
-    when(mockDio.get(any)).thenAnswer(
+    when(mockDio.get(any,queryParameters: anyNamed('queryParameters'))).thenAnswer(
       (_) async => Response(
         requestOptions: RequestOptions(path: url),
         statusCode: 200,
@@ -25,9 +25,10 @@ main() {
   }
 
   void _setUpDioUnsuccessResponse({String url = ''}) {
-    when(mockDio.get(any)).thenAnswer(
+    when(mockDio.get(any,queryParameters: anyNamed("queryParameters"))).thenAnswer(
       (_) async => Response(
         requestOptions: RequestOptions(path: url),
+
         statusCode: 404,
       ),
     );
@@ -42,9 +43,10 @@ main() {
     test('should return AgendaEntriesPageModel when status code is 200',
         () async {
       // arrange
+      
       _setUpMockDioSuccessResponse('entries_page.html');
       // act
-      final result = await remoteDataSource.getAgendaEntriesPage('');
+      final result = await remoteDataSource.getAgendaEntriesPage(href: '',page: 1);
       // assert
       expect(result, isA<AgendaEntriesPageModel>());
     });
@@ -57,7 +59,7 @@ main() {
 
       // assert
 
-      expect(() => call(''), throwsA(TypeMatcher<ServerException>()));
+      expect(() => call(href: '',page: 1), throwsA(TypeMatcher<ServerException>()));
     });
   });
 

@@ -11,6 +11,51 @@ main() {
     return EntryPageExtractor(body: doc.body!);
   }
 
+  group('sukela buttons', () {
+    late EntryPageExtractor extractorWithCorrectData;
+
+    setUp(() {
+      extractorWithCorrectData =
+          _createExtractorWithAFixture('entries_page.html');
+    });
+
+    group('extractHref method', () {
+      test('extractAllHref should return valid href', () {
+        final actual =
+            '/turkiyenin-2021-ikinci-ceyrekte-21-7-buyumesi--7022174?a=nice';
+
+        final allHref = extractorWithCorrectData.extractAllHref();
+
+        expect(actual, allHref);
+      });
+
+      test('extractTodayHref should return valid href', () {
+        final actual =
+            '/turkiyenin-2021-ikinci-ceyrekte-21-7-buyumesi--7022174?a=dailynice';
+
+        final todayHref = extractorWithCorrectData.extractTodayHref();
+
+        expect(actual, todayHref);
+      });
+
+      test('should return [ServerException] when can\'t find href', () {
+        final extractor =
+            _createExtractorWithAFixture('entries_page_without_page_href.html');
+
+        expect(() => extractor.extractHref(), throwsA(isA<ServerException>()));
+      });
+
+      test('should return valid href when data appropriate', () {
+        final actualHref =
+            '/turkiyenin-2021-ikinci-ceyrekte-21-7-buyumesi--7022174';
+
+        final href = extractorWithCorrectData.extractHref();
+
+        expect(actualHref, href);
+      });
+    });
+  });
+
   group('extractShowAll', () {
     test('should return null if there is no a tag class name with showall', () {
       // arrange
@@ -23,10 +68,11 @@ main() {
       expect(showAll, isNull);
     });
 
-    test('should return null if show all button contains empty href string', () {
+    test('should return null if show all button contains empty href string',
+        () {
       // arrange
-      final extractor =
-          _createExtractorWithAFixture('entry_page_with_empty_href_show_all_btn.html');
+      final extractor = _createExtractorWithAFixture(
+          'entry_page_with_empty_href_show_all_btn.html');
       // act
       final showAll = extractor.extractShowAll();
 
@@ -58,35 +104,6 @@ main() {
       // assert
       expect(actualHref, showAll.href);
       expect(actualLabel, showAll.text);
-    });
-  });
-
-  group('extractAllHref and extractTodayHref', () {
-    void _expectThrowsAServerException(EntryPageExtractor entryPageExtractor) {
-      expect(() => entryPageExtractor.extractTodayHref(),
-          throwsA(isA<ServerException>()));
-      expect(() => entryPageExtractor.extractAllHref(),
-          throwsA(isA<ServerException>()));
-    }
-
-    test('should throw ServerException when element href equals to null', () {
-      // arrange
-      final extractor =
-          _createExtractorWithAFixture('entries_page_without_nice_hrefs.html');
-
-      // assert
-      _expectThrowsAServerException(extractor);
-    });
-
-    test(
-        'should return ServerException when there isnt any today or all button',
-        () {
-      // arrange
-      final extractor =
-          _createExtractorWithAFixture('entries_page_without_nice_div.html');
-
-      // assert
-      _expectThrowsAServerException(extractor);
     });
   });
 
