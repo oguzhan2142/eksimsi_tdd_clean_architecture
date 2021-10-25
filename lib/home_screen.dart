@@ -1,3 +1,4 @@
+import 'package:eksimsi_tdd_clean_architecture/core/constants/colors.dart';
 import 'package:eksimsi_tdd_clean_architecture/core/pages/channels_tab.dart';
 import 'package:eksimsi_tdd_clean_architecture/core/pages/profile_tab.dart';
 import 'package:flutter/cupertino.dart';
@@ -74,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
       bottomNavigationBar: Container(
         margin: const EdgeInsets.only(right: 20, left: 20, bottom: 18),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: MAIN_COLOR,
           borderRadius: BorderRadius.all(Radius.circular(100)),
           boxShadow: [
             BoxShadow(
@@ -88,17 +89,12 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 6.0, vertical: 6),
           child: GNav(
-            tabBackgroundGradient: LinearGradient(
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft,
-              colors: [Colors.teal.shade100, Colors.teal.shade500],
-            ),
             gap: 2,
             tabBorderRadius: 30,
-            color: Colors.grey[600],
-            activeColor: Colors.white,
+            color: Colors.grey[300],
+            activeColor: SECONDARY_COLOR,
             iconSize: 16,
-            textStyle: TextStyle(fontSize: 12, color: Colors.white),
+            textStyle: TextStyle(fontSize: 12, color: SECONDARY_COLOR),
             tabBackgroundColor: Colors.grey[800]!,
             padding: EdgeInsets.symmetric(horizontal: 12, vertical: 16.5),
             duration: Duration(milliseconds: 800),

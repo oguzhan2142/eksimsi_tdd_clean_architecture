@@ -94,7 +94,13 @@ class _EntriesScreenState extends State<EntriesScreen> {
                         ),
                       ),
                       SizedBox(height: 20),
-                      PaginationWidget(),
+                      state.entriesPage.page == null ||
+                              state.entriesPage.totalPage == null
+                          ? SizedBox()
+                          : PaginationWidget(
+                              currentPage: state.entriesPage.page!,
+                              maxPage: state.entriesPage.totalPage!,
+                            ),
                       SizedBox(height: 30),
                     ],
                   ),

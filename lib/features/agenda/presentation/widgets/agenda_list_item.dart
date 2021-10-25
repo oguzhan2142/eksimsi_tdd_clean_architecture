@@ -1,5 +1,5 @@
+import 'package:eksimsi_tdd_clean_architecture/core/constants/colors.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/entities/agenda_header.dart';
-import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/entities/entries_page.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/presentation/pages/entries_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -25,7 +25,11 @@ class AgendaListItem extends StatelessWidget {
           ),
         );
       },
-      child: Card(
+      child: Container(
+        decoration: BoxDecoration(
+          color: MAIN_COLOR[700],
+          borderRadius: BorderRadius.circular(10),
+        ),
         margin: EdgeInsets.symmetric(horizontal: 16),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -44,6 +48,7 @@ class AgendaListItem extends StatelessWidget {
                       style: GoogleFonts.montserrat(
                         fontSize: 15,
                         fontWeight: FontWeight.w500,
+                        color: SECONDARY_COLOR,
                       ),
                     ),
                   ],
@@ -54,16 +59,19 @@ class AgendaListItem extends StatelessWidget {
               ),
               Container(
                 padding: EdgeInsets.all(8),
+                width: 55,
                 decoration: BoxDecoration(
-                  color: Theme.of(context).primaryColor,
+                  color: SECONDARY_COLOR,
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: Text(
-                  agendaHeader.entryAmount,
-                  style: GoogleFonts.montserrat(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.white,
+                child: Center(
+                  child: Text(
+                    agendaHeader.entryAmount,
+                    style: GoogleFonts.montserrat(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w700,
+                      color: MAIN_COLOR[700],
+                    ),
                   ),
                 ),
               ),

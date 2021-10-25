@@ -1,3 +1,4 @@
+import 'package:eksimsi_tdd_clean_architecture/core/constants/colors.dart';
 import 'package:eksimsi_tdd_clean_architecture/core/constants/fonts.dart';
 import 'package:eksimsi_tdd_clean_architecture/core/model/base_content.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/entities/contents.dart';
@@ -22,7 +23,7 @@ class ContentSpansGenerator {
           text: item.text,
           style: GoogleFonts.getFont(
             CONTENT_FONT_FAMILY,
-            color: Colors.black,
+            color: TEXT_COLOR,
             fontSize: _textSize,
           ),
         ));

@@ -1,3 +1,4 @@
+import 'package:eksimsi_tdd_clean_architecture/core/constants/colors.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/presentation/blocs/entry_page_bloc/entry_page_bloc.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/presentation/blocs/headers_bloc/headers_bloc.dart';
 import 'package:eksimsi_tdd_clean_architecture/home_screen.dart';
@@ -23,14 +24,16 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  // (57	58	62	)
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Ekşimsi',
       theme: ThemeData(
-        primaryColor: Colors.teal,
-        primarySwatch: Colors.teal,
-        scaffoldBackgroundColor: Colors.grey[200],
+        primaryColor: MAIN_COLOR,
+        primarySwatch: MAIN_COLOR,
+        scaffoldBackgroundColor: MAIN_COLOR,
       ),
       home: HomeScreen(),
     );
