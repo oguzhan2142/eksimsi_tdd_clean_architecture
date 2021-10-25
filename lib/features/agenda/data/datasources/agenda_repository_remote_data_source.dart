@@ -60,7 +60,7 @@ class AgendaRepositoryRemoteDataSourceImpl
     final parser = QueryParameterParser(url: url);
 
     final response = await client.get(
-      EKSI_BASE_DOMAIN,
+      url,
       queryParameters: parser.parameters,
     );
 

@@ -63,7 +63,6 @@ class EntryPageExtractor {
 
   List<EntryModel> extractEntries() {
     final allUlTags = body.getElementsByTagName('ul');
-
     Element? ulTag;
     for (var item in allUlTags) {
       if (item.attributes['id'] == 'entry-item-list') {
@@ -71,6 +70,7 @@ class EntryPageExtractor {
         break;
       }
     }
+    ulTag = body.querySelector('#entry-item-list');
     if (ulTag == null) {
       throw ServerException();
     }

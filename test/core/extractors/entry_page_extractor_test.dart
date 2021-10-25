@@ -141,4 +141,15 @@ main() {
       expect(list.last.favouriteCount, lastFavouriteCount);
     });
   });
+
+  test('should return true entiries count', () {
+    // arrange
+    final count = 10;
+    Document doc = fixtureAsDocument('entries_page.html');
+    EntryPageExtractor extractor = new EntryPageExtractor(body: doc.body!);
+    // act
+    final entries = extractor.extractEntries();
+    // assert
+    expect(count, entries.length);
+  });
 }
