@@ -22,14 +22,14 @@ class EntryPageBloc extends Bloc<EntryPageEvent, EntryPageState> {
     EntryPageEvent event,
   ) async* {
     if (event is GetEntryPageEvent) {
-      yield* mapGetEntryPageEventToState(event.pageHref);
+      yield* mapGetEntryPageEventToState(event.pageHref, event.page);
     }
   }
 
-  Stream<EntryPageState> mapGetEntryPageEventToState(String href) async* {
+  Stream<EntryPageState> mapGetEntryPageEventToState(String href,int?page) async* {
     yield GetEntryPageInProgress();
 
-    final failureOrEntriesPage = await getAgendaEntriesPage(Params(url: href));
+    final failureOrEntriesPage = await getAgendaEntriesPage(href,page);
 
     yield failureOrEntriesPage.fold(
       (l) {

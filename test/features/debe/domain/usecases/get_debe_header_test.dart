@@ -25,14 +25,14 @@ main() {
     DebeHeader(title: 'debe title', href: 'href'),
   ];
 
-  test('should call mock debe repository when call GetDebeHeaders usecase',
+  test('should c all mock debe repository when call GetDebeHeaders usecase',
       () async {
     // arrange
     when(mockDebeRepository.getDebeHeaders())
         .thenAnswer((_) async => Right(debeHeaders));
 
     // act
-    final result = await useCase(NoParams());
+    final result = await useCase();
 
     // assert
     expect(result, Right(debeHeaders));

@@ -4,13 +4,13 @@ import 'package:eksimsi_tdd_clean_architecture/core/usecases/usecase.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/entities/entries_page.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/repositories/agenda_repository.dart';
 
-class GetAgendaEntriesPage extends UseCase<EntriesPage, Params> {
+class GetAgendaEntriesPage  {
   final AgendaRepository agendaRepository;
 
   GetAgendaEntriesPage(this.agendaRepository);
 
   @override
-  Future<Either<Failure, EntriesPage>> call(Params params) async {
-    return await agendaRepository.getAgendaEntriesPage(params.url);
+  Future<Either<Failure, EntriesPage>> call(String url, int? page) async {
+    return await agendaRepository.getAgendaEntriesPage(url,page);
   }
 }

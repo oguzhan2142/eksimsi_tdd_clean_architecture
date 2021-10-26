@@ -9,8 +9,9 @@ abstract class EntryPageEvent extends Equatable {
 
 class GetEntryPageEvent extends EntryPageEvent {
   final String pageHref;
+  final int? page;
 
-  GetEntryPageEvent({required this.pageHref});
+  GetEntryPageEvent({required this.pageHref, this.page});
 
   @override
   List<Object> get props => [pageHref];

@@ -42,7 +42,7 @@ main() {
 
     test('should emit [GetHeadersError] when no internet connection', () {
       // arrange
-      when(getAgendaEntriesPage(any))
+      when(getAgendaEntriesPage(any,any))
           .thenAnswer((_) => Future.value(Left(NoInternetFailure())));
 
       final expected = [
@@ -59,7 +59,7 @@ main() {
     test(
         'should emit [GetHeadersError] when error while getting data from source',
         () {
-      when(getAgendaEntriesPage(any))
+      when(getAgendaEntriesPage(any,any))
           .thenAnswer((_) => Future.value(Left(ServerFailure())));
 
       final expected = [
@@ -75,7 +75,7 @@ main() {
 
     test('should emit [GetHeadersCompleted] when get data successfully', () {
       // arrange
-      when(getAgendaEntriesPage(any))
+      when(getAgendaEntriesPage(any,any))
           .thenAnswer((_) => Future.value(Right(entriesPage)));
 
       // assert

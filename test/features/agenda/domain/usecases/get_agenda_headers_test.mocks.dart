@@ -42,8 +42,8 @@ class MockAgendaRepository extends _i1.Mock implements _i3.AgendaRepository {
           as _i4.Future<_i2.Either<_i5.Failure, List<_i6.AgendaHeader>>>);
   @override
   _i4.Future<_i2.Either<_i5.Failure, _i7.EntriesPage>> getAgendaEntriesPage(
-          String? url) =>
-      (super.noSuchMethod(Invocation.method(#getAgendaEntriesPage, [url]),
+          String? url, int? page) =>
+      (super.noSuchMethod(Invocation.method(#getAgendaEntriesPage, [url, page]),
           returnValue: Future<_i2.Either<_i5.Failure, _i7.EntriesPage>>.value(
               _FakeEither_0<_i5.Failure, _i7.EntriesPage>())) as _i4
           .Future<_i2.Either<_i5.Failure, _i7.EntriesPage>>);

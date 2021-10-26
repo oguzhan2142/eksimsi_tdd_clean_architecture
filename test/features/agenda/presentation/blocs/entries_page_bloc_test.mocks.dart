@@ -6,8 +6,6 @@ import 'dart:async' as _i5;
 
 import 'package:dartz/dartz.dart' as _i3;
 import 'package:eksimsi_tdd_clean_architecture/core/error/failures.dart' as _i6;
-import 'package:eksimsi_tdd_clean_architecture/core/usecases/usecase.dart'
-    as _i8;
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/entities/entries_page.dart'
     as _i7;
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/repositories/agenda_repository.dart'
@@ -44,8 +42,8 @@ class MockGetAgendaEntriesPage extends _i1.Mock
           returnValue: _FakeAgendaRepository_0()) as _i2.AgendaRepository);
   @override
   _i5.Future<_i3.Either<_i6.Failure, _i7.EntriesPage>> call(
-          _i8.Params? params) =>
-      (super.noSuchMethod(Invocation.method(#call, [params]),
+          String? url, int? page) =>
+      (super.noSuchMethod(Invocation.method(#call, [url, page]),
           returnValue: Future<_i3.Either<_i6.Failure, _i7.EntriesPage>>.value(
               _FakeEither_1<_i6.Failure, _i7.EntriesPage>())) as _i5
           .Future<_i3.Either<_i6.Failure, _i7.EntriesPage>>);

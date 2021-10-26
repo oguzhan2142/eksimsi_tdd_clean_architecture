@@ -32,10 +32,10 @@ main() {
     EntriesPage data,
   ) async {
     // arrange
-    when(mockAgendaRepository.getAgendaEntriesPage(any))
+    when(mockAgendaRepository.getAgendaEntriesPage(any,any))
         .thenAnswer((_) async => Right(agendaEntriesPage));
     // act
-    final result = await useCase.call(Params(url: ''));
+    final result = await useCase.call('',null);
     return result;
   }
 
@@ -43,7 +43,7 @@ main() {
     final result = await _arrangeAndAct(agendaEntriesPage);
     // assert
     expect(result, Right(agendaEntriesPage));
-    verify(mockAgendaRepository.getAgendaEntriesPage(any));
+    verify(mockAgendaRepository.getAgendaEntriesPage(any,any));
     verifyNoMoreInteractions(mockAgendaRepository);
   });
 

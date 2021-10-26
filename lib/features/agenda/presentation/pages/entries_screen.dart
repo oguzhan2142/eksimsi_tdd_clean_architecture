@@ -26,7 +26,10 @@ class _EntriesScreenState extends State<EntriesScreen> {
   void initState() {
     entryPageBloc = BlocProvider.of<EntryPageBloc>(context);
 
-    entryPageBloc.add(GetEntryPageEvent(pageHref: widget.entryPageHref));
+    entryPageBloc.add(GetEntryPageEvent(
+      pageHref: widget.entryPageHref,
+      
+    ));
     super.initState();
   }
 

@@ -1,5 +1,6 @@
 import 'package:eksimsi_tdd_clean_architecture/core/constants/colors.dart';
 import 'package:eksimsi_tdd_clean_architecture/core/constants/fonts.dart';
+import 'package:eksimsi_tdd_clean_architecture/features/agenda/presentation/widgets/pagination_numbers_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -11,6 +12,8 @@ class PaginationWidget extends StatelessWidget {
   const PaginationWidget(
       {Key? key, required this.currentPage, required this.maxPage})
       : super(key: key);
+
+      
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +44,12 @@ class PaginationWidget extends StatelessWidget {
               ),
             ),
           ),
-          Expanded(child: Placeholder()),
+          Expanded(
+            child: PaginationNumbersWidget(
+              currentPage: currentPage,
+              maxPage: maxPage,
+            ),
+          ),
           TextButton(
             onPressed: () {},
             child: Text(

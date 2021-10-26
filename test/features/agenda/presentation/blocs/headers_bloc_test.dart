@@ -35,7 +35,7 @@ main() {
 
     test('should emit [GetHeadersError] when cant get data from source', () {
       // arrange
-      when(getAgendaHeaders(any))
+      when(getAgendaHeaders())
           .thenAnswer((realInvocation) => Future.value(Left(ServerFailure())));
       final expected = [
         GetAgendaHeadersInProgress(),
@@ -51,7 +51,7 @@ main() {
 
     test('should emit [GetHeadersError] when no internet connection', () {
       // arrange
-      when(getAgendaHeaders(any)).thenAnswer(
+      when(getAgendaHeaders()).thenAnswer(
           (realInvocation) => Future.value(Left(NoInternetFailure())));
 
       final expected = [
@@ -70,7 +70,7 @@ main() {
         'should emit [GetAgendaHeadersInProgress] [GetAgendaHeadersCompleted] when data is gotten successfully',
         () {
       // arrange
-      when(getAgendaHeaders(any))
+      when(getAgendaHeaders())
           .thenAnswer((realInvocation) => Future.value(Right(headers)));
 
       final expected = [

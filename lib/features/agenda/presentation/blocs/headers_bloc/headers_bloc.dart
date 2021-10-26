@@ -27,7 +27,7 @@ class HeadersBloc extends Bloc<HeadersEvent, HeadersState> {
 
   Stream<HeadersState> mapGetAgendaHeadersEventToState() async* {
     yield GetAgendaHeadersInProgress();
-    final failureOrHeaders = await getAgendaHeaders(NoParams());
+    final failureOrHeaders = await getAgendaHeaders();
 
     yield failureOrHeaders.fold(
       (l) {

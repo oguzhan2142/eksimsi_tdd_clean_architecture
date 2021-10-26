@@ -6,8 +6,6 @@ import 'dart:async' as _i5;
 
 import 'package:dartz/dartz.dart' as _i3;
 import 'package:eksimsi_tdd_clean_architecture/core/error/failures.dart' as _i6;
-import 'package:eksimsi_tdd_clean_architecture/core/usecases/usecase.dart'
-    as _i8;
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/entities/agenda_header.dart'
     as _i7;
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/repositories/agenda_repository.dart'
@@ -42,9 +40,8 @@ class MockGetAgendaHeaders extends _i1.Mock implements _i4.GetAgendaHeaders {
       (super.noSuchMethod(Invocation.getter(#agendaRepository),
           returnValue: _FakeAgendaRepository_0()) as _i2.AgendaRepository);
   @override
-  _i5.Future<_i3.Either<_i6.Failure, List<_i7.AgendaHeader>>> call(
-          _i8.NoParams? noParams) =>
-      (super.noSuchMethod(Invocation.method(#call, [noParams]),
+  _i5.Future<_i3.Either<_i6.Failure, List<_i7.AgendaHeader>>> call() =>
+      (super.noSuchMethod(Invocation.method(#call, []),
               returnValue:
                   Future<_i3.Either<_i6.Failure, List<_i7.AgendaHeader>>>.value(
                       _FakeEither_1<_i6.Failure, List<_i7.AgendaHeader>>()))

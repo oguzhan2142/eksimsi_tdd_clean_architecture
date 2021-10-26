@@ -30,7 +30,7 @@ main() {
     when(mockAgendaRepository.getAgendaHeaders())
         .thenAnswer((_) async => Right(agendaHeaders));
 
-    final result = await usecase(NoParams());
+    final result = await usecase();
 
    
 

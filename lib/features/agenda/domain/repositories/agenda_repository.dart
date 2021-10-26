@@ -8,7 +8,7 @@ abstract class AgendaRepository {
   Future<Either<Failure, List<AgendaHeader>>> getAgendaHeaders();
 
 
-  Future<Either<Failure,EntriesPage>> getAgendaEntriesPage(String url);
+  Future<Either<Failure,EntriesPage>> getAgendaEntriesPage(String url, int? page);
 
 
 }
