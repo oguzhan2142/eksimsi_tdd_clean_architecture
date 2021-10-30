@@ -84,7 +84,12 @@ class _PaginationWidgetState extends State<PaginationWidget> {
             ),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              final lastPageHref = widget.entriesPage.entryPageHref
+                  .getLastPageHref(widget.entriesPage.totalPage!);
+
+              entryPageBloc.add(GetEntryPageEvent(pageHref: lastPageHref));
+            },
             icon: Icon(
               CupertinoIcons.arrow_right,
               color: SECONDARY_COLOR,

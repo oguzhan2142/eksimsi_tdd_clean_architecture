@@ -63,7 +63,6 @@ class EntryPageHref {
 
     final uri = Uri(path: body, queryParameters: parameters);
     return uri.toString();
-
   }
 
   String getNextPageHref() {
@@ -74,5 +73,16 @@ class EntryPageHref {
 
     final uri = Uri(path: body, queryParameters: parameters);
     return uri.toString();
+  }
+
+  String getLastPageHref(int lastPage) {
+     var parameters = _getParameters();
+
+
+    parameters[PAGE_KEY] = lastPage.toString();
+
+    final uri = Uri(path: body, queryParameters: parameters);
+    return uri.toString();
+
   }
 }

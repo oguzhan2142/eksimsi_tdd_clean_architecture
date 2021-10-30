@@ -13,6 +13,60 @@ main() {
   final hrefWithPopuler =
       '/tanrinin-varligi-kanitlanabilir-mi-sorunsali--7070566?a=popular';
 
+  group('getLastPage', () {
+    final lastPage = 20;
+    test('should return correct page when its nice and p', () {
+      // arrange
+
+      final expected =
+          '/9-5-milyon-liraya-satilan-apartman-dairesi--7067078?a=nice&p=$lastPage';
+      EntryPageHref model = EntryPageHrefModel(rawHref: hrefWithNiceAndP);
+
+      // act
+      final href = model.getLastPageHref(lastPage);
+
+      // assert
+      expect(href, expected);
+    });
+
+    test('should return correct page when its dailynice and p', () {
+      // arrange
+      final expected =
+          '/9-5-milyon-liraya-satilan-apartman-dairesi--7067078?a=dailynice&p=$lastPage';
+      EntryPageHref model = EntryPageHrefModel(rawHref: hrefWithDailyniceAndP);
+
+      // act
+      final href = model.getLastPageHref(lastPage);
+
+      // assert
+      expect(href, expected);
+    });
+
+    test('should return correct page when its popular and p', () {
+      // arrange
+      final expected =
+          '/9-5-milyon-liraya-satilan-apartman-dairesi--7067078?a=popular&p=$lastPage';
+      EntryPageHref model = EntryPageHrefModel(rawHref: hrefWithpopularAndP);
+
+      // act
+      final href = model.getLastPageHref(lastPage);
+
+      // assert
+      expect(href, expected);
+    });
+    test('should return correct page when its only popular', () {
+      final expected =
+          '/tanrinin-varligi-kanitlanabilir-mi-sorunsali--7070566?a=popular&p=$lastPage';
+      EntryPageHref model = EntryPageHrefModel(rawHref: hrefWithPopuler);
+
+      // act
+      final href = model.getLastPageHref(lastPage);
+
+      // assert
+      expect(href, expected);
+      // assert
+    });
+  });
 
   group('getPreviousPage', () {
     test('should return correct page when its nice and p', () {
@@ -32,8 +86,7 @@ main() {
       // arrange
       final expected =
           '/9-5-milyon-liraya-satilan-apartman-dairesi--7067078?a=dailynice&p=5';
-      EntryPageHref model =
-          EntryPageHrefModel(rawHref: hrefWithDailyniceAndP);
+      EntryPageHref model = EntryPageHrefModel(rawHref: hrefWithDailyniceAndP);
 
       // act
       final href = model.getPreviousPageHref();
@@ -46,8 +99,7 @@ main() {
       // arrange
       final expected =
           '/9-5-milyon-liraya-satilan-apartman-dairesi--7067078?a=popular&p=5';
-      EntryPageHref model =
-          EntryPageHrefModel(rawHref: hrefWithpopularAndP);
+      EntryPageHref model = EntryPageHrefModel(rawHref: hrefWithpopularAndP);
 
       // act
       final href = model.getPreviousPageHref();
@@ -86,8 +138,7 @@ main() {
       // arrange
       final expected =
           '/9-5-milyon-liraya-satilan-apartman-dairesi--7067078?a=dailynice&p=7';
-      EntryPageHref model =
-          EntryPageHrefModel(rawHref: hrefWithDailyniceAndP);
+      EntryPageHref model = EntryPageHrefModel(rawHref: hrefWithDailyniceAndP);
 
       // act
       final href = model.getNextPageHref();
@@ -100,8 +151,7 @@ main() {
       // arrange
       final expected =
           '/9-5-milyon-liraya-satilan-apartman-dairesi--7067078?a=popular&p=7';
-      EntryPageHref model =
-          EntryPageHrefModel(rawHref: hrefWithpopularAndP);
+      EntryPageHref model = EntryPageHrefModel(rawHref: hrefWithpopularAndP);
 
       // act
       final href = model.getNextPageHref();
