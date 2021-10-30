@@ -1,6 +1,5 @@
 
 import 'package:dartz/dartz.dart';
-import 'package:eksimsi_tdd_clean_architecture/core/usecases/usecase.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/debe/domain/entities/debe_header.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/debe/domain/repositories/debe_repository.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/debe/domain/usecases/get_debe_headers.dart';

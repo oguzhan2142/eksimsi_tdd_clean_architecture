@@ -18,4 +18,8 @@ class URIFailure extends Failure{
   List<Object?> get props => [];
 }
 
+class NullDataFailure extends Failure{
+  @override
 
+  List<Object?> get props => throw UnimplementedError();
+}
