@@ -16,6 +16,13 @@ class EntryPageHref {
   bool get isPopuler => hrefMode == EntryPageHrefMode.popular;
 
   String getHref() {
+    Map<String, String> parameters = _getParameters();
+
+    final uri = Uri(path: body, queryParameters: parameters);
+    return uri.toString();
+  }
+
+  Map<String, String> _getParameters() {
     var parameters = <String, String>{};
     if (isPopuler) {
       parameters[MODE_KEY] = POPULER_VALUE;
@@ -26,9 +33,7 @@ class EntryPageHref {
     }
 
     parameters[PAGE_KEY] = p;
-
-    final uri = Uri(path: body, queryParameters: parameters);
-    return uri.toString();
+    return parameters;
   }
 
   void toNice() {
@@ -47,15 +52,22 @@ class EntryPageHref {
     hrefMode = EntryPageHrefMode.none;
   }
 
+  String getPreviousPageHref() {
+    var parameters = _getParameters();
+
+    int newPage = int.parse(p) - 1;
+
+    if (newPage < 1) newPage = 1;
+
+    parameters[PAGE_KEY] = newPage.toString();
+
+    final uri = Uri(path: body, queryParameters: parameters);
+    return uri.toString();
+
+  }
+
   String getNextPageHref() {
-    var parameters = <String, String>{};
-    if (isPopuler) {
-      parameters[MODE_KEY] = POPULER_VALUE;
-    } else if (isNice) {
-      parameters[MODE_KEY] = NICE_VALUE;
-    } else if (isDailyNice) {
-      parameters[MODE_KEY] = DAILYNICE_VALUE;
-    }
+    var parameters = _getParameters();
 
     int newPage = int.parse(p) + 1;
     parameters[PAGE_KEY] = newPage.toString();
