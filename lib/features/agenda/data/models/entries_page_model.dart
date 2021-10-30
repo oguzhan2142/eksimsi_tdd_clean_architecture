@@ -3,6 +3,7 @@ import 'package:eksimsi_tdd_clean_architecture/core/model/show_all.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/data/models/entry_model.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/entities/entries_page.dart';
 import 'package:html/dom.dart';
+import 'entry_page_href_model.dart';
 
 class AgendaEntriesPageModel extends EntriesPage {
   AgendaEntriesPageModel({
@@ -13,6 +14,7 @@ class AgendaEntriesPageModel extends EntriesPage {
     required int? totalPage,
     required List<EntryModel> entires,
     required ShowAll? showAll,
+    required String rawHref,
   }) : super(
           allHref: allHref,
           entries: entires,
@@ -21,9 +23,11 @@ class AgendaEntriesPageModel extends EntriesPage {
           showAll: showAll,
           todayHref: todayHref,
           totalPage: totalPage,
+          entryPageHref: EntryPageHrefModel(rawHref: rawHref),
         );
 
-  factory AgendaEntriesPageModel.fromBody(Element body) {
+  factory AgendaEntriesPageModel.fromBody(
+      {required Element body, required String rawHref}) {
     final extractor = EntryPageExtractor(body: body);
 
     int? page = extractor.extractCurrentPage();
@@ -34,7 +38,9 @@ class AgendaEntriesPageModel extends EntriesPage {
     final entries = extractor.extractEntries();
     ShowAll? showAll = extractor.extractShowAll();
 
+
     return AgendaEntriesPageModel(
+      rawHref: rawHref,
       allHref: allHref,
       showAll: showAll,
       entires: entries,

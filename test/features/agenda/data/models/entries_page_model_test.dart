@@ -9,7 +9,7 @@ main() {
   AgendaEntriesPageModel _getModelFromFixture() {
     final document = fixtureAsDocument('entries_page.html');
 
-    return AgendaEntriesPageModel.fromBody(document.body!);
+    return AgendaEntriesPageModel.fromBody(body: document.body!,rawHref: '');
   }
 
   test('should return valid EntriesPageModel when call fromBody method', () {
@@ -33,7 +33,7 @@ main() {
     final doc = fixtureAsDocument('entries_page_without_entry_model_ul.html');
 
     // act
-    final call = () => AgendaEntriesPageModel.fromBody(doc.body!);
+    final call = () => AgendaEntriesPageModel.fromBody(body: doc.body!,rawHref: '');
 
     // assert
     expect(call, throwsA(isA<ServerException>()));

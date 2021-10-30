@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:eksimsi_tdd_clean_architecture/core/constants/error_messages.dart';
 import 'package:eksimsi_tdd_clean_architecture/core/error/failures.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/entities/entries_page.dart';
+import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/entities/entry_page_href.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/usecases/get_agenda_entries_page.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/presentation/blocs/entry_page_bloc/entry_page_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -37,6 +38,7 @@ main() {
         showAll: null,
         todayHref: 'todayHref',
         entries: [],
+        entryPageHref: EntryPageHref(),
       );
     });
 

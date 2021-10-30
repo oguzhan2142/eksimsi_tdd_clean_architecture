@@ -1,5 +1,3 @@
-
-
 enum EntryPageHrefMode { none, popular, nice, dailynice }
 
 const PAGE_KEY = 'p';
@@ -12,9 +10,6 @@ class EntryPageHref {
   late String body;
   late String p;
   late EntryPageHrefMode hrefMode;
-
-
- 
 
   bool get isDailyNice => hrefMode == EntryPageHrefMode.dailynice;
   bool get isNice => hrefMode == EntryPageHrefMode.nice;
@@ -50,5 +45,22 @@ class EntryPageHref {
 
   void toNone() {
     hrefMode = EntryPageHrefMode.none;
+  }
+
+  String getNextPageHref() {
+    var parameters = <String, String>{};
+    if (isPopuler) {
+      parameters[MODE_KEY] = POPULER_VALUE;
+    } else if (isNice) {
+      parameters[MODE_KEY] = NICE_VALUE;
+    } else if (isDailyNice) {
+      parameters[MODE_KEY] = DAILYNICE_VALUE;
+    }
+
+    int newPage = int.parse(p) + 1;
+    parameters[PAGE_KEY] = newPage.toString();
+
+    final uri = Uri(path: body, queryParameters: parameters);
+    return uri.toString();
   }
 }

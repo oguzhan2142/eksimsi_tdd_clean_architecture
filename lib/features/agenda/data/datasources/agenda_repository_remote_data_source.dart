@@ -75,6 +75,6 @@ class AgendaRepositoryRemoteDataSourceImpl
       throw ServerException();
     }
 
-    return AgendaEntriesPageModel.fromBody(body);
+    return AgendaEntriesPageModel.fromBody(body: body,rawHref: href);
   }
 }

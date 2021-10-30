@@ -1,19 +1,16 @@
 import 'package:eksimsi_tdd_clean_architecture/core/constants/colors.dart';
 import 'package:eksimsi_tdd_clean_architecture/core/constants/fonts.dart';
+import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/entities/entries_page.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/presentation/widgets/pagination_numbers_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class PaginationWidget extends StatelessWidget {
-  final int currentPage;
-  final int maxPage;
+  final EntriesPage entriesPage;
 
-  const PaginationWidget(
-      {Key? key, required this.currentPage, required this.maxPage})
+  const PaginationWidget({Key? key, required this.entriesPage})
       : super(key: key);
-
-      
 
   @override
   Widget build(BuildContext context) {
@@ -46,12 +43,14 @@ class PaginationWidget extends StatelessWidget {
           ),
           Expanded(
             child: PaginationNumbersWidget(
-              currentPage: currentPage,
-              maxPage: maxPage,
+              currentPage: entriesPage.page!,
+              maxPage: entriesPage.totalPage!,
             ),
           ),
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+
+            },
             child: Text(
               'Sonraki',
               style: GoogleFonts.getFont(

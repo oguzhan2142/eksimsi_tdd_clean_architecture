@@ -41,4 +41,5 @@ class EntryPageHrefModel extends EntryPageHref {
     final body = parser.path;
     this.body = body;
   }
+
 }

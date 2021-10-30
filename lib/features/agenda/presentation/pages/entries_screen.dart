@@ -101,8 +101,7 @@ class _EntriesScreenState extends State<EntriesScreen> {
                               state.entriesPage.totalPage == null
                           ? SizedBox()
                           : PaginationWidget(
-                              currentPage: state.entriesPage.page!,
-                              maxPage: state.entriesPage.totalPage!,
+                              entriesPage: state.entriesPage,
                             ),
                       SizedBox(height: 30),
                     ],

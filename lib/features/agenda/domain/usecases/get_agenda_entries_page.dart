@@ -9,7 +9,7 @@ class GetAgendaEntriesPage  {
 
   GetAgendaEntriesPage(this.agendaRepository);
 
-  @override
+
   Future<Either<Failure, EntriesPage>> call(String url, int? page) async {
     return await agendaRepository.getAgendaEntriesPage(url,page);
   }
