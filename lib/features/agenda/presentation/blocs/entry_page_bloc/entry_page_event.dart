@@ -11,7 +11,7 @@ class GetEntryPageEvent extends EntryPageEvent {
   final String pageHref;
   final int? page;
 
-  GetEntryPageEvent({required this.pageHref, this.page});
+  const GetEntryPageEvent({required this.pageHref, this.page});
 
   @override
   List<Object> get props => [pageHref];

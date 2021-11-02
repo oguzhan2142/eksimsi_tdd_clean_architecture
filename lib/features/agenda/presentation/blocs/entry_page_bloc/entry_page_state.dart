@@ -14,7 +14,7 @@ class GetEntryPageInProgress extends EntryPageState {}
 class GetEntryPageFailed extends EntryPageState {
   final String message;
 
-  GetEntryPageFailed({required this.message});
+  const GetEntryPageFailed({required this.message});
 
   @override
   List<Object> get props => [message];
@@ -23,7 +23,7 @@ class GetEntryPageFailed extends EntryPageState {
 class GetEntryPageCompleted extends EntryPageState {
   final EntriesPage entriesPage;
 
-  GetEntryPageCompleted({required this.entriesPage});
+  const GetEntryPageCompleted({required this.entriesPage});
 
   @override
   List<Object> get props => [entriesPage];

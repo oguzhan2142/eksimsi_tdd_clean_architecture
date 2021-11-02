@@ -1,18 +1,17 @@
 import 'package:dartz/dartz.dart';
 import 'package:eksimsi_tdd_clean_architecture/core/constants/error_messages.dart';
 import 'package:eksimsi_tdd_clean_architecture/core/error/failures.dart';
+import 'package:eksimsi_tdd_clean_architecture/core/parameters/get_agenda_entry_page_parameter.dart';
+
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/entities/entries_page.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/entities/entry_page_href.dart';
-import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/usecases/get_agenda_entries_page.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/presentation/blocs/entry_page_bloc/entry_page_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
-import 'entries_page_bloc_test.mocks.dart';
+import '../../domain/usecases/get_agenda_entries_page_test.mocks.dart';
 
-@GenerateMocks([GetAgendaEntriesPage])
-main() {
+void main() {
   late MockGetAgendaEntriesPage getAgendaEntriesPage;
   late EntryPageBloc bloc;
 
@@ -37,47 +36,48 @@ main() {
         header: 'header',
         showAll: null,
         todayHref: 'todayHref',
-        entries: [],
+        entries: const [],
         entryPageHref: EntryPageHref(),
       );
     });
 
     test('should emit [GetHeadersError] when no internet connection', () {
       // arrange
-      when(getAgendaEntriesPage(any,any))
+      final param = GetAgendaEntriesPageParameter(href: '');
+      when(getAgendaEntriesPage.call(parameter:anyNamed('parameter')))
           .thenAnswer((_) => Future.value(Left(NoInternetFailure())));
 
       final expected = [
         GetEntryPageInProgress(),
-        GetEntryPageFailed(message: NO_INTERNET_MESSAGE),
+        const GetEntryPageFailed(message: NO_INTERNET_MESSAGE),
       ];
       // assert
       expectLater(bloc.stream, emitsInOrder(expected));
 
       // act
-      bloc.add(GetEntryPageEvent(pageHref: ''));
+      bloc.add(const GetEntryPageEvent(pageHref: ''));
     });
 
     test(
         'should emit [GetHeadersError] when error while getting data from source',
         () {
-      when(getAgendaEntriesPage(any,any))
+      when(getAgendaEntriesPage.call(parameter: anyNamed('parameter')))
           .thenAnswer((_) => Future.value(Left(ServerFailure())));
 
       final expected = [
         GetEntryPageInProgress(),
-        GetEntryPageFailed(message: ENTRIES_PAGE_ERROR_MESSAGE),
+        const GetEntryPageFailed(message: ENTRIES_PAGE_ERROR_MESSAGE),
       ];
       // assert
       expectLater(bloc.stream, emitsInOrder(expected));
 
       // act
-      bloc.add(GetEntryPageEvent(pageHref: ''));
+      bloc.add(const GetEntryPageEvent(pageHref: ''));
     });
 
     test('should emit [GetHeadersCompleted] when get data successfully', () {
       // arrange
-      when(getAgendaEntriesPage(any,any))
+      when(getAgendaEntriesPage.call(parameter: anyNamed('parameter')))
           .thenAnswer((_) => Future.value(Right(entriesPage)));
 
       // assert
@@ -89,7 +89,7 @@ main() {
       expectLater(bloc.stream, emitsInOrder(expected));
 
       // act
-      bloc.add(GetEntryPageEvent(pageHref: ''));
+      bloc.add(const GetEntryPageEvent(pageHref: ''));
     });
   });
 }

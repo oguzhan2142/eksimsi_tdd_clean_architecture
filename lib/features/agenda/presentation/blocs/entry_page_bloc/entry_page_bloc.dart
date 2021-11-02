@@ -1,11 +1,13 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:eksimsi_tdd_clean_architecture/core/parameters/get_agenda_entry_page_parameter.dart';
+import 'package:equatable/equatable.dart';
 import '../../../../../core/constants/error_messages.dart';
 import '../../../../../core/error/failures.dart';
 import '../../../domain/entities/entries_page.dart';
 import '../../../domain/usecases/get_agenda_entries_page.dart';
-import 'package:equatable/equatable.dart';
+
 
 part 'entry_page_event.dart';
 part 'entry_page_state.dart';
@@ -25,10 +27,15 @@ class EntryPageBloc extends Bloc<EntryPageEvent, EntryPageState> {
     }
   }
 
-  Stream<EntryPageState> mapGetEntryPageEventToState(String href,int?page) async* {
+  Stream<EntryPageState> mapGetEntryPageEventToState(
+    String href,
+    int? page,
+  ) async* {
     yield GetEntryPageInProgress();
 
-    final failureOrEntriesPage = await getAgendaEntriesPage(href,page);
+    final parameter = GetAgendaEntriesPageParameter(href: href, page: page);
+    final failureOrEntriesPage =
+        await getAgendaEntriesPage(parameter: parameter);
 
     yield failureOrEntriesPage.fold(
       (l) {
