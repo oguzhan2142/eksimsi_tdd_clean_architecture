@@ -1,8 +1,8 @@
-import 'package:eksimsi_tdd_clean_architecture/core/constants/colors.dart';
-import 'package:eksimsi_tdd_clean_architecture/core/constants/fonts.dart';
-import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/entities/entries_page.dart';
-import 'package:eksimsi_tdd_clean_architecture/features/agenda/presentation/blocs/entry_page_bloc/entry_page_bloc.dart';
-import 'package:eksimsi_tdd_clean_architecture/features/agenda/presentation/widgets/pagination_numbers_widget.dart';
+import '../../../../core/constants/colors.dart';
+import '../../../../core/constants/fonts.dart';
+import '../../domain/entities/entries_page.dart';
+import '../blocs/entry_page_bloc/entry_page_bloc.dart';
+import 'pagination_numbers_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

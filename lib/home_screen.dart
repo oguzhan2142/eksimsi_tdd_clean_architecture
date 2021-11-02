@@ -1,6 +1,6 @@
-import 'package:eksimsi_tdd_clean_architecture/core/constants/colors.dart';
-import 'package:eksimsi_tdd_clean_architecture/core/pages/channels_tab.dart';
-import 'package:eksimsi_tdd_clean_architecture/core/pages/profile_tab.dart';
+import 'core/constants/colors.dart';
+import 'core/pages/channels_tab.dart';
+import 'core/pages/profile_tab.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';

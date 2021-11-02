@@ -1,7 +1,6 @@
+import '../model/base_content.dart';
 
-import 'package:eksimsi_tdd_clean_architecture/core/model/base_content.dart';
-
-import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/entities/contents.dart';
+import '../../features/agenda/domain/entities/contents.dart';
 import 'package:html/dom.dart';
 
 /* 
@@ -15,7 +14,7 @@ import 'package:html/dom.dart';
 class ContentExtractor {
   bool _isExtractingSpoilerContent = false;
 
-  var _lastSpoilerContents;
+  late List<Content> _lastSpoilerContents;
   final _contents = <Content>[];
   int _index = -1;
   bool _firstSpoilerPassed = false;
@@ -78,25 +77,23 @@ class ContentExtractor {
   }
 
   void _extractOuterLinkContent(Element node) {
-    late final href;
-    if (node.attributes['href'] == null) {
-      return null;
+    late final String? href;
+    if (node.attributes['href'] != null) {
+      href = node.attributes['href'];
+
+      final model = OuterLinkContent(href: href!, text: node.text.trim());
+
+      _addModelList(model);
     }
-
-    href = node.attributes['href'];
-
-    final model = OuterLinkContent(href: href, text: node.text.trim());
-
-    _addModelList(model);
   }
 
   _extractInnerLinkContent(Element node) {
-    late final href;
+    late final String href;
     if (node.attributes['href'] == null) {
       return null;
     }
 
-    href = node.attributes['href'];
+    href = node.attributes['href']!;
 
     final model = InnerLinkContent(href: href, text: node.text.trim());
     _addModelList(model);

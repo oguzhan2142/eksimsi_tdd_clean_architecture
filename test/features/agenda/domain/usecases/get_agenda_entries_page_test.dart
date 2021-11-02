@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:eksimsi_tdd_clean_architecture/core/error/failures.dart';
-import 'package:eksimsi_tdd_clean_architecture/core/usecases/usecase.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/entities/entries_page.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/entities/entry_page_href.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/repositories/agenda_repository.dart';

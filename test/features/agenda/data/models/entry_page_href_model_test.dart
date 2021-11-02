@@ -10,10 +10,6 @@ main() {
 
   final hrefWithDailyniceAndP =
       '/9-5-milyon-liraya-satilan-apartman-dairesi--7067078?a=dailynice&p=6';
-  final hrefWithPopulerAndP =
-      '/9-5-milyon-liraya-satilan-apartman-dairesi--7067078?a=populer&p=6';
-  final hrefWithPopuler =
-      '/tanrinin-varligi-kanitlanabilir-mi-sorunsali--7070566?a=popular';
 
   final p = '6';
   final body = '/9-5-milyon-liraya-satilan-apartman-dairesi--7067078';

@@ -1,4 +1,4 @@
-import 'package:eksimsi_tdd_clean_architecture/core/error/exception.dart';
+import '../error/exception.dart';
 
 class QueryParameterParser {
   late String _url;

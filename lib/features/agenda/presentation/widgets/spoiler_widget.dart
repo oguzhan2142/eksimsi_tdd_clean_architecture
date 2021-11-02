@@ -1,6 +1,6 @@
-import 'package:eksimsi_tdd_clean_architecture/core/constants/fonts.dart';
-import 'package:eksimsi_tdd_clean_architecture/core/extractors/content_spans_generator.dart';
-import 'package:eksimsi_tdd_clean_architecture/core/model/base_content.dart';
+import '../../../../core/constants/fonts.dart';
+import '../../../../core/extractors/content_spans_generator.dart';
+import '../../../../core/model/base_content.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

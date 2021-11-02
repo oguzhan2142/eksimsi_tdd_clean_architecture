@@ -1,11 +1,10 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:eksimsi_tdd_clean_architecture/core/constants/error_messages.dart';
-import 'package:eksimsi_tdd_clean_architecture/core/error/failures.dart';
-import 'package:eksimsi_tdd_clean_architecture/core/usecases/usecase.dart';
-import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/entities/entries_page.dart';
-import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/usecases/get_agenda_entries_page.dart';
+import '../../../../../core/constants/error_messages.dart';
+import '../../../../../core/error/failures.dart';
+import '../../../domain/entities/entries_page.dart';
+import '../../../domain/usecases/get_agenda_entries_page.dart';
 import 'package:equatable/equatable.dart';
 
 part 'entry_page_event.dart';

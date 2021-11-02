@@ -1,8 +1,7 @@
-import 'package:eksimsi_tdd_clean_architecture/core/error/failures.dart';
 import 'package:dartz/dartz.dart';
-import 'package:eksimsi_tdd_clean_architecture/core/usecases/usecase.dart';
-import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/entities/entries_page.dart';
-import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/repositories/agenda_repository.dart';
+import '../../../../core/error/failures.dart';
+import '../entities/entries_page.dart';
+import '../repositories/agenda_repository.dart';
 
 class GetAgendaEntriesPage  {
   final AgendaRepository agendaRepository;

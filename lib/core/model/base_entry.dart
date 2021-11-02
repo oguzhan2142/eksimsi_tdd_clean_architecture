@@ -1,4 +1,4 @@
-import 'package:eksimsi_tdd_clean_architecture/core/model/base_content.dart';
+import 'base_content.dart';
 import 'package:equatable/equatable.dart';
 
 abstract class BaseEntry extends Equatable {

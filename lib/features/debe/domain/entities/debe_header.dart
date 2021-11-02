@@ -1,4 +1,4 @@
-import 'package:eksimsi_tdd_clean_architecture/core/model/base_agenda_header.dart';
+import '../../../../core/model/base_agenda_header.dart';
 
 class DebeHeader extends BaseHeader {
   DebeHeader({

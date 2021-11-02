@@ -1,6 +1,6 @@
-import 'package:eksimsi_tdd_clean_architecture/core/constants/remote_source_constants.dart';
-import 'package:eksimsi_tdd_clean_architecture/core/extractors/query_parameter_parser.dart';
-import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/entities/entry_page_href.dart';
+import '../../../../core/constants/remote_source_constants.dart';
+import '../../../../core/extractors/query_parameter_parser.dart';
+import '../../domain/entities/entry_page_href.dart';
 
 class EntryPageHrefModel extends EntryPageHref {
 

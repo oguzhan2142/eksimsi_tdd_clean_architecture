@@ -1,6 +1,6 @@
-import 'package:eksimsi_tdd_clean_architecture/core/constants/colors.dart';
-import 'package:eksimsi_tdd_clean_architecture/core/extractors/content_spans_generator.dart';
-import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/entities/entry.dart';
+import '../../../../core/constants/colors.dart';
+import '../../../../core/extractors/content_spans_generator.dart';
+import '../../domain/entities/entry.dart';
 import 'package:flutter/material.dart';
 
 class EntryListItem extends StatelessWidget {

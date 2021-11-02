@@ -1,4 +1,4 @@
-import 'package:eksimsi_tdd_clean_architecture/core/model/base_content.dart';
+import '../../../../core/model/base_content.dart';
 
 class InnerLinkContent extends LinkContent {
   InnerLinkContent({

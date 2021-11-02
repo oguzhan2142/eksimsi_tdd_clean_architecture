@@ -24,14 +24,14 @@ class AgendaHeaderModel extends AgendaHeader {
     final aTag = liElement.getElementsByTagName('a').first;
     final entryAmount = aTag.getElementsByTagName('small').first.text.trim();
 
-    late final href;
+    late final String href;
     if (aTag.attributes['href'] != null) {
       href = aTag.attributes['href']!.trim();
     } else {
       href = '';
     }
 
-    late final title;
+    late final String title;
     if (aTag.children.isNotEmpty) {
       title = aTag.firstChild!.text!.trim();
     } else {

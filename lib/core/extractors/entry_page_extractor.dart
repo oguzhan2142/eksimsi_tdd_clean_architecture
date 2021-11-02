@@ -1,7 +1,6 @@
-import 'package:dartz/dartz_unsafe.dart';
-import 'package:eksimsi_tdd_clean_architecture/core/error/exception.dart';
-import 'package:eksimsi_tdd_clean_architecture/core/model/show_all.dart';
-import 'package:eksimsi_tdd_clean_architecture/features/agenda/data/models/entry_model.dart';
+import '../error/exception.dart';
+import '../model/show_all.dart';
+import '../../features/agenda/data/models/entry_model.dart';
 import 'package:html/dom.dart';
 
 class EntryPageExtractor {

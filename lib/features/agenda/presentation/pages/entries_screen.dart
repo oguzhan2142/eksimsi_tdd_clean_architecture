@@ -1,13 +1,14 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:eksimsi_tdd_clean_architecture/core/constants/fonts.dart';
-import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/entities/entry.dart';
-import 'package:eksimsi_tdd_clean_architecture/features/agenda/presentation/blocs/entry_page_bloc/entry_page_bloc.dart';
-import 'package:eksimsi_tdd_clean_architecture/features/agenda/presentation/widgets/entry_list_item.dart';
-import 'package:eksimsi_tdd_clean_architecture/features/agenda/presentation/widgets/pagination_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../../../../core/constants/fonts.dart';
+import '../../domain/entities/entry.dart';
+import '../blocs/entry_page_bloc/entry_page_bloc.dart';
+import '../widgets/entry_list_item.dart';
+import '../widgets/pagination_widget.dart';
 
 class EntriesScreen extends StatefulWidget {
   final String entryPageHref;
@@ -20,16 +21,17 @@ class EntriesScreen extends StatefulWidget {
 }
 
 class _EntriesScreenState extends State<EntriesScreen> {
-  late final entryPageBloc;
+  late final EntryPageBloc entryPageBloc;
 
   @override
   void initState() {
     entryPageBloc = BlocProvider.of<EntryPageBloc>(context);
 
-    entryPageBloc.add(GetEntryPageEvent(
-      pageHref: widget.entryPageHref,
-      
-    ));
+    entryPageBloc.add(
+      GetEntryPageEvent(
+        pageHref: widget.entryPageHref,
+      ),
+    );
     super.initState();
   }
 
@@ -48,7 +50,6 @@ class _EntriesScreenState extends State<EntriesScreen> {
                   child: AutoSizeText(
                     state.entriesPage.header,
                     maxFontSize: 14,
-                    minFontSize: 12,
                     style: GoogleFonts.getFont(
                       HEADER_FONT_FAMILY,
                       fontWeight: FontWeight.w500,
@@ -65,7 +66,7 @@ class _EntriesScreenState extends State<EntriesScreen> {
         bloc: entryPageBloc,
         builder: (context, state) {
           if (state is GetEntryPageInProgress) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           }
@@ -76,7 +77,7 @@ class _EntriesScreenState extends State<EntriesScreen> {
 
           if (state is GetEntryPageCompleted) {
             return Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               child: RefreshIndicator(
                 onRefresh: () async {
                   entryPageBloc
@@ -85,25 +86,26 @@ class _EntriesScreenState extends State<EntriesScreen> {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       ListView.separated(
                         shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         itemCount: state.entriesPage.entries.length,
                         separatorBuilder: (context, index) =>
-                            SizedBox(height: 5),
+                            const SizedBox(height: 5),
                         itemBuilder: (context, index) => EntryListItem(
                           entry: state.entriesPage.entries[index] as Entry,
                         ),
                       ),
-                      SizedBox(height: 20),
-                      state.entriesPage.page == null ||
-                              state.entriesPage.totalPage == null
-                          ? SizedBox()
-                          : PaginationWidget(
-                              entriesPage: state.entriesPage,
-                            ),
-                      SizedBox(height: 30),
+                      const SizedBox(height: 20),
+                      if (state.entriesPage.page == null ||
+                          state.entriesPage.totalPage == null)
+                        const SizedBox()
+                      else
+                        PaginationWidget(
+                          entriesPage: state.entriesPage,
+                        ),
+                      const SizedBox(height: 30),
                     ],
                   ),
                 ),

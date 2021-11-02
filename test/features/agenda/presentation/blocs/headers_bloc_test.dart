@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:eksimsi_tdd_clean_architecture/core/constants/error_messages.dart';
 import 'package:eksimsi_tdd_clean_architecture/core/error/failures.dart';
-import 'package:eksimsi_tdd_clean_architecture/core/usecases/usecase.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/entities/agenda_header.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/usecases/get_agenda_headers.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/presentation/blocs/headers_bloc/headers_bloc.dart';

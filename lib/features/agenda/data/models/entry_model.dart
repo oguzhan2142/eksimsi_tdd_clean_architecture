@@ -1,7 +1,7 @@
-import 'package:eksimsi_tdd_clean_architecture/core/model/base_content.dart';
-import 'package:eksimsi_tdd_clean_architecture/core/extractors/content_extractor.dart';
+import '../../../../core/model/base_content.dart';
+import '../../../../core/extractors/content_extractor.dart';
 
-import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/entities/entry.dart';
+import '../../domain/entities/entry.dart';
 import 'package:html/dom.dart';
 
 class EntryModel extends Entry {

@@ -1,8 +1,8 @@
-import 'package:eksimsi_tdd_clean_architecture/core/constants/colors.dart';
-import 'package:eksimsi_tdd_clean_architecture/core/constants/fonts.dart';
-import 'package:eksimsi_tdd_clean_architecture/core/model/base_content.dart';
-import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/entities/contents.dart';
-import 'package:eksimsi_tdd_clean_architecture/features/agenda/presentation/widgets/spoiler_widget.dart';
+import '../constants/colors.dart';
+import '../constants/fonts.dart';
+import '../model/base_content.dart';
+import '../../features/agenda/domain/entities/contents.dart';
+import '../../features/agenda/presentation/widgets/spoiler_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

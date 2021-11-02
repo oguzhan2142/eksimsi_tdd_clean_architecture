@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:eksimsi_tdd_clean_architecture/core/error/failures.dart';
-import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/entities/agenda_header.dart';
-import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/repositories/agenda_repository.dart';
+import '../../../../core/error/failures.dart';
+import '../entities/agenda_header.dart';
+import '../repositories/agenda_repository.dart';
 
 class GetAgendaHeaders{
   final AgendaRepository agendaRepository;

@@ -1,5 +1,5 @@
-import 'package:eksimsi_tdd_clean_architecture/core/constants/colors.dart';
-import 'package:eksimsi_tdd_clean_architecture/core/constants/fonts.dart';
+import '../../../../core/constants/colors.dart';
+import '../../../../core/constants/fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

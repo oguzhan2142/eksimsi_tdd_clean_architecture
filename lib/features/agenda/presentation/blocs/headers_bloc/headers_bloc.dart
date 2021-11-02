@@ -1,11 +1,10 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:eksimsi_tdd_clean_architecture/core/constants/error_messages.dart';
-import 'package:eksimsi_tdd_clean_architecture/core/error/failures.dart';
-import 'package:eksimsi_tdd_clean_architecture/core/usecases/usecase.dart';
-import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/entities/agenda_header.dart';
-import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/usecases/get_agenda_headers.dart';
+import '../../../../../core/constants/error_messages.dart';
+import '../../../../../core/error/failures.dart';
+import '../../../domain/entities/agenda_header.dart';
+import '../../../domain/usecases/get_agenda_headers.dart';
 import 'package:equatable/equatable.dart';
 
 part 'headers_event.dart';
@@ -31,7 +30,7 @@ class HeadersBloc extends Bloc<HeadersEvent, HeadersState> {
 
     yield failureOrHeaders.fold(
       (l) {
-        late final message;
+        late final String message;
 
         if (l is NoInternetFailure) {
           message = NO_INTERNET_MESSAGE;

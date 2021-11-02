@@ -1,7 +1,7 @@
-import 'package:eksimsi_tdd_clean_architecture/core/constants/colors.dart';
-import 'package:eksimsi_tdd_clean_architecture/features/agenda/presentation/blocs/entry_page_bloc/entry_page_bloc.dart';
-import 'package:eksimsi_tdd_clean_architecture/features/agenda/presentation/blocs/headers_bloc/headers_bloc.dart';
-import 'package:eksimsi_tdd_clean_architecture/home_screen.dart';
+import 'core/constants/colors.dart';
+import 'features/agenda/presentation/blocs/entry_page_bloc/entry_page_bloc.dart';
+import 'features/agenda/presentation/blocs/headers_bloc/headers_bloc.dart';
+import 'home_screen.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
