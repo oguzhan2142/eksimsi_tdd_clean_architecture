@@ -1,7 +1,7 @@
-import '../model/base_content.dart';
+import 'package:html/dom.dart';
 
 import '../../features/agenda/domain/entities/contents.dart';
-import 'package:html/dom.dart';
+import '../model/base_content.dart';
 
 /* 
   inner link - class = 'b'
@@ -20,7 +20,7 @@ class ContentExtractor {
   bool _firstSpoilerPassed = false;
 
   List<Content> extract(NodeList nodeList) {
-    for (var node in nodeList) {
+    for (final node in nodeList) {
       _index++;
 
       if (_isNextThreeNodePartOfSpoilerContentHead(nodeList)) {

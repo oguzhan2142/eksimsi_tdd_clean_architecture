@@ -3,8 +3,5 @@ import 'package:eksimsi_tdd_clean_architecture/features/channels/domain/reposito
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 
-@GenerateMocks([ChannelHeader])
-void main(List<String> args) {
-  
-}
+
 

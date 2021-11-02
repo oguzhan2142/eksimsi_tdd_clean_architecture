@@ -4,3 +4,4 @@ class NoInternetException implements Exception {}
 
 class URIException implements Exception {}
 class NullDataException implements Exception{}
+class ExtractorException implements Exception{}

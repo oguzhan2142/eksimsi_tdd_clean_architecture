@@ -8,10 +8,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
-import '../entities/channel_header_test.mocks.dart';
+
 import 'get_channel_headers_test.mocks.dart';
 
-@GenerateMocks([ChannelRepository])
+@GenerateMocks([ChannelRepository, ChannelHeader])
 void main() {
   late MockChannelRepository channelRepository;
 
@@ -34,16 +34,5 @@ void main() {
 
     // assert
     verify(channelRepository.getChannelHeaders());
-  });
-
-  test('should return Failure when repository returns failure', () {
-    // arrange
-    when(channelRepository.getChannelHeaders())
-        .thenAnswer((_) async => Left(ServerFailure()));
-    // act
-
-    final failureOrHeaders = getChannelHeaders.call(parameter: NoParameter());
-
-    // assert
   });
 }

@@ -41,3 +41,26 @@ class MockChannelRepository extends _i1.Mock implements _i3.ChannelRepository {
   @override
   String toString() => super.toString();
 }
+
+/// A class which mocks [ChannelHeader].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockChannelHeader extends _i1.Mock implements _i6.ChannelHeader {
+  MockChannelHeader() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  String get title =>
+      (super.noSuchMethod(Invocation.getter(#title), returnValue: '')
+          as String);
+  @override
+  String get subTitle =>
+      (super.noSuchMethod(Invocation.getter(#subTitle), returnValue: '')
+          as String);
+  @override
+  String get href =>
+      (super.noSuchMethod(Invocation.getter(#href), returnValue: '') as String);
+  @override
+  String toString() => super.toString();
+}
