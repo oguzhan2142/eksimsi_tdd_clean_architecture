@@ -1,4 +1,6 @@
-class ChannelHeader {
+import 'package:equatable/equatable.dart';
+
+class ChannelHeader extends Equatable {
   final String title;
   final String subTitle;
   final String href;
@@ -9,7 +11,6 @@ class ChannelHeader {
     required this.href,
   });
 
-
-  
-
+  @override
+  List<Object?> get props => [title, subTitle, href];
 }

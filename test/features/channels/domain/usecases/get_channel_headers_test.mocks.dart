@@ -62,5 +62,9 @@ class MockChannelHeader extends _i1.Mock implements _i6.ChannelHeader {
   String get href =>
       (super.noSuchMethod(Invocation.getter(#href), returnValue: '') as String);
   @override
+  List<Object?> get props =>
+      (super.noSuchMethod(Invocation.getter(#props), returnValue: <Object?>[])
+          as List<Object?>);
+  @override
   String toString() => super.toString();
 }
