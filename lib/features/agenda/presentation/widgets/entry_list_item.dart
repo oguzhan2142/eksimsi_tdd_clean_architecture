@@ -1,5 +1,5 @@
 import '../../../../core/constants/colors.dart';
-import '../../../../core/extractors/content_spans_generator.dart';
+import '../../../../core/utils/content_spans_generator.dart';
 import '../../domain/entities/entry.dart';
 import 'package:flutter/material.dart';
 

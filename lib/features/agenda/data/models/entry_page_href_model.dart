@@ -1,5 +1,5 @@
 import '../../../../core/constants/remote_source_constants.dart';
-import '../../../../core/extractors/query_parameter_parser.dart';
+import '../../../../core/utils/query_parameter_parser.dart';
 import '../../domain/entities/entry_page_href.dart';
 
 class EntryPageHrefModel extends EntryPageHref {

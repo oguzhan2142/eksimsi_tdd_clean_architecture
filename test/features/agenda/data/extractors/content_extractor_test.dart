@@ -1,9 +1,9 @@
-import 'package:eksimsi_tdd_clean_architecture/core/extractors/content_extractor.dart';
+import 'package:eksimsi_tdd_clean_architecture/features/agenda/data/extractors/content_extractor.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/entities/contents.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:html/dom.dart';
 
-import '../../fixtures/fixture_reader.dart';
+import '../../../../fixtures/fixture_reader.dart';
 
 void main() {
   late ContentExtractor extractor;

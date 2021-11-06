@@ -1,6 +1,6 @@
-import '../error/exception.dart';
-import '../model/show_all.dart';
-import '../../features/agenda/data/models/entry_model.dart';
+import '../../../../core/error/exception.dart';
+import '../../../../core/model/show_all.dart';
+import '../models/entry_model.dart';
 import 'package:html/dom.dart';
 
 class EntryPageExtractor {

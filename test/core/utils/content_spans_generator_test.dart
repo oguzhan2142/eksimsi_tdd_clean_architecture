@@ -1,4 +1,4 @@
-import 'package:eksimsi_tdd_clean_architecture/core/extractors/content_spans_generator.dart';
+import 'package:eksimsi_tdd_clean_architecture/core/utils/content_spans_generator.dart';
 import 'package:eksimsi_tdd_clean_architecture/core/model/base_content.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/entities/contents.dart';
 import 'package:flutter_test/flutter_test.dart';

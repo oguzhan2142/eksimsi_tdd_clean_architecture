@@ -1,4 +1,4 @@
-import 'package:eksimsi_tdd_clean_architecture/core/extractors/entry_page_extractor.dart';
+import 'package:eksimsi_tdd_clean_architecture/features/agenda/data/extractors/entry_page_extractor.dart';
 import 'package:eksimsi_tdd_clean_architecture/core/model/show_all.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/data/models/entry_model.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/entities/entries_page.dart';

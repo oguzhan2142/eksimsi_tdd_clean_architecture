@@ -1,5 +1,5 @@
 import '../../../../core/model/base_content.dart';
-import '../../../../core/extractors/content_extractor.dart';
+import '../extractors/content_extractor.dart';
 
 import '../../domain/entities/entry.dart';
 import 'package:html/dom.dart';

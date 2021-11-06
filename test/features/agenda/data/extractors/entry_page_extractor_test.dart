@@ -1,9 +1,9 @@
 import 'package:eksimsi_tdd_clean_architecture/core/error/exception.dart';
-import 'package:eksimsi_tdd_clean_architecture/core/extractors/entry_page_extractor.dart';
+import 'package:eksimsi_tdd_clean_architecture/features/agenda/data/extractors/entry_page_extractor.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:html/dom.dart';
 
-import '../../fixtures/fixture_reader.dart';
+import '../../../../fixtures/fixture_reader.dart';
 
 main() {
   EntryPageExtractor _createExtractorWithAFixture(String fixture) {

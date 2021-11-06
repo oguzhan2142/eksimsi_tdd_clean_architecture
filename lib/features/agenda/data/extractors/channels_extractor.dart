@@ -1,5 +1,5 @@
 import 'package:eksimsi_tdd_clean_architecture/core/error/exception.dart';
-import 'package:eksimsi_tdd_clean_architecture/core/extractors/base_extractor.dart';
+import 'package:eksimsi_tdd_clean_architecture/core/extractors/extractor.dart';
 import 'package:html/dom.dart';
 
 class ChannelsExtractor extends Extractor<List<Element>> {

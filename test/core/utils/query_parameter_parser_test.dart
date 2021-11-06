@@ -1,5 +1,5 @@
 import 'package:eksimsi_tdd_clean_architecture/core/error/exception.dart';
-import 'package:eksimsi_tdd_clean_architecture/core/extractors/query_parameter_parser.dart';
+import 'package:eksimsi_tdd_clean_architecture/core/utils/query_parameter_parser.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 main() {

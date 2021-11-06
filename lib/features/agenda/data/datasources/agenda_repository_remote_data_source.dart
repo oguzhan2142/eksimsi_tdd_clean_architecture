@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:eksimsi_tdd_clean_architecture/core/constants/remote_source_constants.dart';
 import 'package:eksimsi_tdd_clean_architecture/core/error/exception.dart';
-import 'package:eksimsi_tdd_clean_architecture/core/extractors/query_parameter_parser.dart';
+import 'package:eksimsi_tdd_clean_architecture/core/utils/query_parameter_parser.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/data/models/agenda_header_model.dart';
 
 import 'package:eksimsi_tdd_clean_architecture/features/agenda/data/models/entries_page_model.dart';
