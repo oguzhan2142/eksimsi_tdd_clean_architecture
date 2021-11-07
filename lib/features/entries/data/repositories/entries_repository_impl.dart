@@ -5,11 +5,11 @@ import 'package:eksimsi_tdd_clean_architecture/features/entries/data/datasources
 import 'package:eksimsi_tdd_clean_architecture/features/entries/domain/entities/entries_page.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/entries/domain/repositories/entries_repository.dart';
 
-class AgendaRepositoryImp extends EntriesRepository {
+class EntriesRepositoryImp extends EntriesRepository {
   final EntriesRepositoryRemoteDataSource entriesRepositoryRemoteDataSource;
   final NetworkInfo networkInfo;
 
-  AgendaRepositoryImp({
+  EntriesRepositoryImp({
     required this.entriesRepositoryRemoteDataSource,
     required this.networkInfo,
   });

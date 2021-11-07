@@ -14,13 +14,33 @@ class GetAgendaHeadersInProgress extends HeadersState {}
 class GetAgendaHeadersCompleted extends HeadersState {
   final List<Header> headers;
 
-  GetAgendaHeadersCompleted({required this.headers});
+  const GetAgendaHeadersCompleted({required this.headers});
 }
 
 class GetAgendaHeadersFailed extends HeadersState {
   final String message;
 
-  GetAgendaHeadersFailed({required this.message});
+  const GetAgendaHeadersFailed({required this.message});
+
+  @override
+  List<Object> get props => [message];
+}
+
+class GetChannelsHeadersInProgress extends HeadersState {}
+
+class GetChannelHeadersCompleted extends HeadersState {
+  final List<ChannelHeader> headers;
+
+  const GetChannelHeadersCompleted({required this.headers});
+
+  @override
+  List<Object> get props => [headers];
+}
+
+class GetChannelHeadersError extends HeadersState {
+  final String message;
+
+  const GetChannelHeadersError({required this.message});
 
   @override
   List<Object> get props => [message];

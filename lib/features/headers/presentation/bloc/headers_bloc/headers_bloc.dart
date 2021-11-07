@@ -1,34 +1,44 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:eksimsi_tdd_clean_architecture/core/parameters/parameter.dart';
+import 'package:eksimsi_tdd_clean_architecture/features/headers/domain/entities/channel_header.dart';
+import 'package:eksimsi_tdd_clean_architecture/features/headers/domain/usecases/get_channel_headers.dart';
+import 'package:equatable/equatable.dart';
+
 import '../../../../../core/constants/error_messages.dart';
 import '../../../../../core/error/failures.dart';
 import '../../../../headers/domain/entities/header.dart';
 import '../../../../headers/domain/usecases/get_headers.dart';
-import 'package:equatable/equatable.dart';
 
 part 'headers_event.dart';
 part 'headers_state.dart';
 
 class HeadersBloc extends Bloc<HeadersEvent, HeadersState> {
   final GetAgendaHeaders getAgendaHeaders;
+  final GetChannelHeaders getChannelHeaders;
 
-  HeadersBloc({required this.getAgendaHeaders}) : super(HeadersInitial());
+  HeadersBloc({
+    required this.getAgendaHeaders,
+    required this.getChannelHeaders,
+  }) : super(HeadersInitial()) {
+    on<GetAgendaHeadersEvent>(
+      (event, emit) => mapGetAgendaHeadersEventToState(event, emit),
+    );
 
-  @override
-  Stream<HeadersState> mapEventToState(
-    HeadersEvent event,
-  ) async* {
-    if (event is GetAgendaHeadersEvent) {
-      yield* mapGetAgendaHeadersEventToState();
-    }
+    on<GetChannelsHeadersEvent>(
+      (event, emit) => mapGetChannelHeadersEventToState(event, emit),
+    );
   }
 
-  Stream<HeadersState> mapGetAgendaHeadersEventToState() async* {
-    yield GetAgendaHeadersInProgress();
+  Future<void> mapGetAgendaHeadersEventToState(
+    GetAgendaHeadersEvent event,
+    Emitter<HeadersState> emit,
+  ) async {
+    emit(GetAgendaHeadersInProgress());
     final failureOrHeaders = await getAgendaHeaders();
 
-    yield failureOrHeaders.fold(
+    final result = failureOrHeaders.fold(
       (l) {
         late final String message;
 
@@ -43,6 +53,35 @@ class HeadersBloc extends Bloc<HeadersEvent, HeadersState> {
         return GetAgendaHeadersFailed(message: message);
       },
       (r) => GetAgendaHeadersCompleted(headers: r),
+    );
+
+    emit(result);
+  }
+
+  Future<void> mapGetChannelHeadersEventToState(
+    GetChannelsHeadersEvent event,
+    Emitter<HeadersState> emit,
+  ) async {
+    emit(GetChannelsHeadersInProgress());
+
+    final failureOrHeaders =
+        await getChannelHeaders.call(parameter: NoParameter());
+
+    emit(
+      failureOrHeaders.fold(
+        (l) {
+          if (l is NoInternetFailure) {
+            return const GetChannelHeadersError(message: NO_INTERNET_MESSAGE);
+          }
+          if (l is ServerFailure) {
+            return const GetChannelHeadersError(message: SERVER_ERROR_MESSAGE);
+          }
+          return const GetChannelHeadersError(
+            message: UNEXPECTED_ERROR_MESSAGE,
+          );
+        },
+        (r) => GetChannelHeadersCompleted(headers: r),
+      ),
     );
   }
 }

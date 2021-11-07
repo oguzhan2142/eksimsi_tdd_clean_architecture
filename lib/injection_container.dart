@@ -1,5 +1,6 @@
 import 'package:connectivity/connectivity.dart';
 import 'package:dio/dio.dart';
+import 'package:eksimsi_tdd_clean_architecture/features/headers/domain/usecases/get_channel_headers.dart';
 import 'package:get_it/get_it.dart';
 
 import 'core/platform/network_info.dart';
@@ -16,14 +17,18 @@ final sl = GetIt.instance;
 void init() {
   // Features
 
-  sl.registerFactory(() => HeadersBloc(getAgendaHeaders: sl()));
+  sl.registerFactory(
+    () => HeadersBloc(getAgendaHeaders: sl(), getChannelHeaders: sl()),
+  );
   sl.registerFactory(() => EntryPageBloc(getAgendaEntriesPage: sl()));
 
+
+  sl.registerLazySingleton(() => GetChannelHeaders(channelRepository: sl()));
   sl.registerLazySingleton(() => GetAgendaHeaders(sl()));
   sl.registerLazySingleton(() => GetAgendaEntriesPage(sl()));
 
   sl.registerLazySingleton<EntriesRepository>(
-    () => AgendaRepositoryImp(
+    () => EntriesRepositoryImp(
       entriesRepositoryRemoteDataSource: sl(),
       networkInfo: sl(),
     ),
@@ -38,6 +43,5 @@ void init() {
   sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(sl()));
 
   // External
-
   sl.registerLazySingleton(() => Connectivity());
 }

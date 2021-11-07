@@ -1,7 +1,7 @@
 import 'dart:collection';
 
 import 'package:eksimsi_tdd_clean_architecture/core/error/exception.dart';
-import 'package:eksimsi_tdd_clean_architecture/features/channels/data/models/channel_header_model.dart';
+import 'package:eksimsi_tdd_clean_architecture/features/headers/data/models/channel_header_model.dart';
 
 
 import 'package:flutter_test/flutter_test.dart';
@@ -10,6 +10,8 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
 import 'channel_header_model_test.mocks.dart';
+
+
 
 @GenerateMocks([Element])
 void main() {

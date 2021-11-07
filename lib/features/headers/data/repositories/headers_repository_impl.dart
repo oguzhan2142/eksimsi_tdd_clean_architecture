@@ -3,6 +3,7 @@ import 'package:eksimsi_tdd_clean_architecture/core/error/exception.dart';
 import 'package:eksimsi_tdd_clean_architecture/core/error/failures.dart';
 import 'package:eksimsi_tdd_clean_architecture/core/platform/network_info.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/headers/data/datasources/headers_repository_remote_data_source.dart';
+import 'package:eksimsi_tdd_clean_architecture/features/headers/domain/entities/channel_header.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/headers/domain/entities/header.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/headers/domain/repositories/headers_repository.dart';
 
@@ -28,5 +29,11 @@ class HeadersRepositoryImpl extends HeadersRepository {
     } on NoInternetException {
       return Left(NoInternetFailure());
     }
+  }
+
+  @override
+  Future<Either<Failure, List<ChannelHeader>>> getChannelHeaders() {
+    // TODO: implement getChannelHeaders
+    throw UnimplementedError();
   }
 }

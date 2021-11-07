@@ -6,10 +6,16 @@ import 'dart:async' as _i5;
 
 import 'package:dartz/dartz.dart' as _i3;
 import 'package:eksimsi_tdd_clean_architecture/core/error/failures.dart' as _i6;
+import 'package:eksimsi_tdd_clean_architecture/core/parameters/parameter.dart'
+    as _i10;
+import 'package:eksimsi_tdd_clean_architecture/features/headers/domain/entities/channel_header.dart'
+    as _i9;
 import 'package:eksimsi_tdd_clean_architecture/features/headers/domain/entities/header.dart'
     as _i7;
 import 'package:eksimsi_tdd_clean_architecture/features/headers/domain/repositories/headers_repository.dart'
     as _i2;
+import 'package:eksimsi_tdd_clean_architecture/features/headers/domain/usecases/get_channel_headers.dart'
+    as _i8;
 import 'package:eksimsi_tdd_clean_architecture/features/headers/domain/usecases/get_headers.dart'
     as _i4;
 import 'package:mockito/mockito.dart' as _i1;
@@ -45,6 +51,30 @@ class MockGetAgendaHeaders extends _i1.Mock implements _i4.GetAgendaHeaders {
           returnValue: Future<_i3.Either<_i6.Failure, List<_i7.Header>>>.value(
               _FakeEither_1<_i6.Failure, List<_i7.Header>>())) as _i5
           .Future<_i3.Either<_i6.Failure, List<_i7.Header>>>);
+  @override
+  String toString() => super.toString();
+}
+
+/// A class which mocks [GetChannelHeaders].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockGetChannelHeaders extends _i1.Mock implements _i8.GetChannelHeaders {
+  MockGetChannelHeaders() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i2.HeadersRepository get channelRepository =>
+      (super.noSuchMethod(Invocation.getter(#channelRepository),
+          returnValue: _FakeHeadersRepository_0()) as _i2.HeadersRepository);
+  @override
+  _i5.Future<_i3.Either<_i6.Failure, List<_i9.ChannelHeader>>> call(
+          {_i10.NoParameter? parameter}) =>
+      (super.noSuchMethod(Invocation.method(#call, [], {#parameter: parameter}),
+          returnValue:
+              Future<_i3.Either<_i6.Failure, List<_i9.ChannelHeader>>>.value(
+                  _FakeEither_1<_i6.Failure, List<_i9.ChannelHeader>>())) as _i5
+          .Future<_i3.Either<_i6.Failure, List<_i9.ChannelHeader>>>);
   @override
   String toString() => super.toString();
 }

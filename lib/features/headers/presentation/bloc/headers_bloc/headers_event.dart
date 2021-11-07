@@ -7,6 +7,6 @@ abstract class HeadersEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class GetAgendaHeadersEvent extends HeadersEvent {
+class GetAgendaHeadersEvent extends HeadersEvent {}
 
-}
+class GetChannelsHeadersEvent extends HeadersEvent {}

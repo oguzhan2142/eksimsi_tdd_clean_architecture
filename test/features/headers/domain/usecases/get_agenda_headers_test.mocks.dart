@@ -6,6 +6,8 @@ import 'dart:async' as _i4;
 
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:eksimsi_tdd_clean_architecture/core/error/failures.dart' as _i5;
+import 'package:eksimsi_tdd_clean_architecture/features/headers/domain/entities/channel_header.dart'
+    as _i7;
 import 'package:eksimsi_tdd_clean_architecture/features/headers/domain/entities/header.dart'
     as _i6;
 import 'package:eksimsi_tdd_clean_architecture/features/headers/domain/repositories/headers_repository.dart'
@@ -36,6 +38,14 @@ class MockHeadersRepository extends _i1.Mock implements _i3.HeadersRepository {
           returnValue: Future<_i2.Either<_i5.Failure, List<_i6.Header>>>.value(
               _FakeEither_0<_i5.Failure, List<_i6.Header>>())) as _i4
           .Future<_i2.Either<_i5.Failure, List<_i6.Header>>>);
+  @override
+  _i4.Future<_i2.Either<_i5.Failure, List<_i7.ChannelHeader>>>
+      getChannelHeaders() => (super.noSuchMethod(
+          Invocation.method(#getChannelHeaders, []),
+          returnValue:
+              Future<_i2.Either<_i5.Failure, List<_i7.ChannelHeader>>>.value(
+                  _FakeEither_0<_i5.Failure, List<_i7.ChannelHeader>>())) as _i4
+          .Future<_i2.Either<_i5.Failure, List<_i7.ChannelHeader>>>);
   @override
   String toString() => super.toString();
 }
