@@ -6,11 +6,11 @@ import 'package:eksimsi_tdd_clean_architecture/core/usecases/usecase.dart';
 
 import '../../../../core/error/failures.dart';
 import '../entities/entries_page.dart';
-import '../repositories/agenda_repository.dart';
+import '../repositories/entries_repository.dart';
 
 class GetAgendaEntriesPage
     extends UseCase<EntriesPage, GetAgendaEntriesPageParameter> {
-  final AgendaRepository agendaRepository;
+  final EntriesRepository agendaRepository;
 
   GetAgendaEntriesPage(this.agendaRepository);
 

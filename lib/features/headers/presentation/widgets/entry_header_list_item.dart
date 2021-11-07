@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../core/constants/colors.dart';
 import '../../domain/entities/header.dart';
-import '../pages/entries_screen.dart';
+import '../../../entries/presentation/pages/entries_screen.dart';
 
 
 

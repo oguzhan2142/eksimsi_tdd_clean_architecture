@@ -1,7 +1,5 @@
-
-
-import 'package:eksimsi_tdd_clean_architecture/features/entries/presentation/blocs/headers_bloc/headers_bloc.dart';
-import 'package:eksimsi_tdd_clean_architecture/features/entries/presentation/widgets/entry_header_list_item.dart';
+import 'package:eksimsi_tdd_clean_architecture/features/headers/presentation/bloc/headers_bloc/headers_bloc.dart';
+import 'package:eksimsi_tdd_clean_architecture/features/headers/presentation/widgets/entry_header_list_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -33,7 +31,7 @@ class _AgendaTabState extends State<AgendaTab> {
         }
 
         if (state is GetAgendaHeadersInProgress) {
-          return Center(
+          return const Center(
             child: CircularProgressIndicator(),
           );
         }
@@ -45,7 +43,7 @@ class _AgendaTabState extends State<AgendaTab> {
             },
             child: ListView.separated(
               itemCount: state.headers.length,
-              padding: EdgeInsets.only(top: 20, bottom: 90),
+              padding: const EdgeInsets.only(top: 20, bottom: 90),
               separatorBuilder: (context, index) => SizedBox(height: 8),
               itemBuilder: (context, index) => EntryHeaderListItem(
                 agendaHeader: state.headers[index],
@@ -54,7 +52,7 @@ class _AgendaTabState extends State<AgendaTab> {
           );
         }
 
-        return SizedBox();
+        return const SizedBox();
       },
     );
   }

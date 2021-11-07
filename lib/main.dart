@@ -3,7 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'core/constants/colors.dart';
 import 'features/entries/presentation/blocs/entry_page_bloc/entry_page_bloc.dart';
-import 'features/entries/presentation/blocs/headers_bloc/headers_bloc.dart';
+
+import 'features/headers/presentation/bloc/headers_bloc/headers_bloc.dart';
 import 'home_screen.dart';
 import 'injection_container.dart';
 
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: MAIN_COLOR,
         scaffoldBackgroundColor: MAIN_COLOR,
       ),
-      home: HomeScreen(),
+      home: const HomeScreen(),
     );
   }
 }

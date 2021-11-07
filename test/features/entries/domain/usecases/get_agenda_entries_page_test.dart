@@ -3,8 +3,9 @@ import 'package:eksimsi_tdd_clean_architecture/core/error/failures.dart';
 import 'package:eksimsi_tdd_clean_architecture/core/parameters/get_agenda_entry_page_parameter.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/entries/domain/entities/entries_page.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/entries/domain/entities/entry_page_href.dart';
-import 'package:eksimsi_tdd_clean_architecture/features/entries/domain/repositories/agenda_repository.dart';
+import 'package:eksimsi_tdd_clean_architecture/features/entries/domain/repositories/entries_repository.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/entries/domain/usecases/get_agenda_entries_page.dart';
+import 'package:eksimsi_tdd_clean_architecture/features/headers/domain/repositories/headers_repository.dart';
 
 
 
@@ -15,16 +16,17 @@ import 'package:mockito/mockito.dart';
 
 
 
-import 'get_agenda_headers_test.mocks.dart';
+import 'get_agenda_entries_page_test.mocks.dart';
 
 
 
 
-@GenerateMocks([AgendaRepository,GetAgendaEntriesPage])
+
+@GenerateMocks([EntriesRepository,GetAgendaEntriesPage])
 void main() {
-  late final MockAgendaRepository mockAgendaRepository = MockAgendaRepository();
+  late final  repository = MockEntriesRepository();
   late final GetAgendaEntriesPage useCase =
-      GetAgendaEntriesPage(mockAgendaRepository);
+      GetAgendaEntriesPage(repository);
 
   final EntriesPage agendaEntriesPage = EntriesPage(
     page: 1,
@@ -43,7 +45,7 @@ final param = GetAgendaEntriesPageParameter(href: '');
     EntriesPage data,
   ) async {
     // arrange
-    when(mockAgendaRepository.getAgendaEntriesPage(any,any))
+    when(repository.getAgendaEntriesPage(any,any))
         .thenAnswer((_) async => Right(agendaEntriesPage));
     // act
     
@@ -55,8 +57,8 @@ final param = GetAgendaEntriesPageParameter(href: '');
     final result = await _arrangeAndAct(agendaEntriesPage);
     // assert
     expect(result, Right(agendaEntriesPage));
-    verify(mockAgendaRepository.getAgendaEntriesPage(any,any));
-    verifyNoMoreInteractions(mockAgendaRepository);
+    verify(repository.getAgendaEntriesPage(any,any));
+    verifyNoMoreInteractions(repository);
   });
 
   // test('should return failure when total page greater than page', () async {

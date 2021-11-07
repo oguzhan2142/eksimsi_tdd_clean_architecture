@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import '../../../../../core/constants/error_messages.dart';
 import '../../../../../core/error/failures.dart';
-import '../../../domain/entities/header.dart';
-import '../../../domain/usecases/get_agenda_headers.dart';
+import '../../../../headers/domain/entities/header.dart';
+import '../../../../headers/domain/usecases/get_headers.dart';
 import 'package:equatable/equatable.dart';
 
 part 'headers_event.dart';

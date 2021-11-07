@@ -1,5 +1,5 @@
 
-import 'package:eksimsi_tdd_clean_architecture/features/entries/domain/entities/header.dart';
+import 'package:eksimsi_tdd_clean_architecture/features/headers/domain/entities/header.dart';
 import 'package:html/dom.dart';
 
 class HeaderModel extends Header {

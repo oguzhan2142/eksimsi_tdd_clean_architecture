@@ -63,41 +63,5 @@ void main() {
     });
   });
 
-  group('getAgendaHeaders', () {
-    const agendaPageUrl = 'https://eksisozluk.com/basliklar/gundem';
 
-    test('should send get request to https://eksisozluk.com/basliklar/gundem',
-        () async {
-      // arrange
-      _setUpMockDioSuccessResponse('gundem.html', url: agendaPageUrl);
-
-      // act
-      await remoteDataSource.getHeaders();
-
-      // assert
-      verify(mockDio.get(agendaPageUrl));
-    });
-
-    test('should return list of AgendaHeaderModels when response code is 200',
-        () async {
-      // arrange
-      _setUpMockDioSuccessResponse('gundem.html');
-
-      // act
-      final models = await remoteDataSource.getHeaders();
-
-      // assert
-      expect(models, isNotEmpty);
-    });
-
-    test('should throw server exception when status code is not 200', () {
-      // arrange
-      _setUpDioUnsuccessResponse(url: agendaPageUrl);
-
-      // act
-      final call = remoteDataSource.getHeaders;
-      // assert
-      expect(() => call(), throwsA(const TypeMatcher<ServerException>()));
-    });
-  });
 }

@@ -2,21 +2,20 @@ import 'package:dartz/dartz.dart';
 import 'package:eksimsi_tdd_clean_architecture/core/error/exception.dart';
 import 'package:eksimsi_tdd_clean_architecture/core/error/failures.dart';
 import 'package:eksimsi_tdd_clean_architecture/core/platform/network_info.dart';
-
-import 'package:eksimsi_tdd_clean_architecture/features/entries/data/datasources/entries_repository_remote_data_source.dart';
-import 'package:eksimsi_tdd_clean_architecture/features/entries/data/models/header_model.dart';
-import 'package:eksimsi_tdd_clean_architecture/features/entries/data/repositories/entries_repository_impl.dart';
+import 'package:eksimsi_tdd_clean_architecture/features/headers/data/datasources/headers_repository_remote_data_source.dart';
+import 'package:eksimsi_tdd_clean_architecture/features/headers/data/models/header_model.dart';
+import 'package:eksimsi_tdd_clean_architecture/features/headers/data/repositories/headers_repository_impl.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
-import 'entries_repository_impl_test.mocks.dart';
 
-@GenerateMocks([EntriesRepositoryRemoteDataSource, NetworkInfo])
+import 'headers_repository_impl_test.mocks.dart';
+
+@GenerateMocks([HeadersRepositoryRemoteDataSource,NetworkInfo])
 void main() {
-  late AgendaRepositoryImp agendaRepositoryImp;
-  late MockEntriesRepositoryRemoteDataSource
-      mockAgendaRepositoryRemoteDataSource;
+  late HeadersRepositoryImpl agendaRepositoryImp;
+  late MockHeadersRepositoryRemoteDataSource remoteDataSource;
 
   late MockNetworkInfo mockNetworkInfo;
 
@@ -25,16 +24,14 @@ void main() {
   ];
 
   setUp(() {
-    mockAgendaRepositoryRemoteDataSource =
-        MockEntriesRepositoryRemoteDataSource();
+    remoteDataSource = MockHeadersRepositoryRemoteDataSource();
     mockNetworkInfo = MockNetworkInfo();
 
-    agendaRepositoryImp = AgendaRepositoryImp(
-      entriesRepositoryRemoteDataSource: mockAgendaRepositoryRemoteDataSource,
+    agendaRepositoryImp = HeadersRepositoryImpl(
+      remoteDataSource: remoteDataSource,
       networkInfo: mockNetworkInfo,
     );
   });
-
   void runTestsOnline(Function body) {
     group('device is online', () {
       setUp(() {
@@ -56,7 +53,7 @@ void main() {
   group('GetAgendaHeader', () {
     test('should check device is online', () async {
       // arrange
-      when(mockAgendaRepositoryRemoteDataSource.getHeaders())
+      when(remoteDataSource.getHeaders())
           .thenAnswer((_) async => agendaHeaders);
       when(mockNetworkInfo.isConnected).thenAnswer((_) async => true);
 
@@ -71,26 +68,25 @@ void main() {
       test('should return remote data when remote data call is successfull',
           () async {
         // arrange
-        when(mockAgendaRepositoryRemoteDataSource.getHeaders())
+        when(remoteDataSource.getHeaders())
             .thenAnswer((_) async => agendaHeaders);
         // act
         final headers = await agendaRepositoryImp.getHeaders();
 
         // assert
-        verify(mockAgendaRepositoryRemoteDataSource.getHeaders());
+        verify(remoteDataSource.getHeaders());
         expect(headers, equals(Right(agendaHeaders)));
       });
 
       test('should return server failure when remote data call is unsucessfull',
           () async {
         // arrange
-        when(mockAgendaRepositoryRemoteDataSource.getHeaders())
-            .thenThrow(ServerException());
+        when(remoteDataSource.getHeaders()).thenThrow(ServerException());
         // act
         final result = await agendaRepositoryImp.getHeaders();
         // assert
-        verify(mockAgendaRepositoryRemoteDataSource.getHeaders());
-        verifyNoMoreInteractions(mockAgendaRepositoryRemoteDataSource);
+        verify(remoteDataSource.getHeaders());
+        verifyNoMoreInteractions(remoteDataSource);
         expect(result, Left(ServerFailure()));
       });
     });
@@ -99,8 +95,7 @@ void main() {
       test('should return NoInternet Failure when not connected to internet',
           () async {
         // arrange
-        when(mockAgendaRepositoryRemoteDataSource.getHeaders())
-            .thenThrow(NoInternetException());
+        when(remoteDataSource.getHeaders()).thenThrow(NoInternetException());
         // act
         final result = await agendaRepositoryImp.getHeaders();
         // assert

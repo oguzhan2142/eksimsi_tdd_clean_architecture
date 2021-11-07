@@ -1,12 +1,12 @@
 
 
-import 'package:eksimsi_tdd_clean_architecture/features/entries/data/models/header_model.dart';
-import 'package:eksimsi_tdd_clean_architecture/features/entries/domain/entities/header.dart';
+import 'package:eksimsi_tdd_clean_architecture/features/headers/data/models/header_model.dart';
+import 'package:eksimsi_tdd_clean_architecture/features/headers/domain/entities/header.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import '../../../../fixtures/fixture_reader.dart';
 
-main() {
+void main() {
   final agentaHeaderModel = HeaderModel(
     title: '4 ağustos 2021 a haber tayyip erdoğan canlı yayını',
     href:

@@ -7,15 +7,13 @@ import 'dart:async' as _i4;
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:eksimsi_tdd_clean_architecture/core/error/failures.dart' as _i5;
 import 'package:eksimsi_tdd_clean_architecture/core/parameters/get_agenda_entry_page_parameter.dart'
-    as _i9;
+    as _i8;
 import 'package:eksimsi_tdd_clean_architecture/features/entries/domain/entities/entries_page.dart'
-    as _i7;
-import 'package:eksimsi_tdd_clean_architecture/features/entries/domain/entities/header.dart'
     as _i6;
-import 'package:eksimsi_tdd_clean_architecture/features/entries/domain/repositories/agenda_repository.dart'
+import 'package:eksimsi_tdd_clean_architecture/features/entries/domain/repositories/entries_repository.dart'
     as _i3;
 import 'package:eksimsi_tdd_clean_architecture/features/entries/domain/usecases/get_agenda_entries_page.dart'
-    as _i8;
+    as _i7;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: avoid_redundant_argument_values
@@ -28,30 +26,24 @@ import 'package:mockito/mockito.dart' as _i1;
 
 class _FakeEither_0<L, R> extends _i1.Fake implements _i2.Either<L, R> {}
 
-class _FakeAgendaRepository_1 extends _i1.Fake implements _i3.AgendaRepository {
-}
+class _FakeEntriesRepository_1 extends _i1.Fake
+    implements _i3.EntriesRepository {}
 
-/// A class which mocks [AgendaRepository].
+/// A class which mocks [EntriesRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockAgendaRepository extends _i1.Mock implements _i3.AgendaRepository {
-  MockAgendaRepository() {
+class MockEntriesRepository extends _i1.Mock implements _i3.EntriesRepository {
+  MockEntriesRepository() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i4.Future<_i2.Either<_i5.Failure, List<_i6.Header>>> getHeaders() =>
-      (super.noSuchMethod(Invocation.method(#getHeaders, []),
-          returnValue: Future<_i2.Either<_i5.Failure, List<_i6.Header>>>.value(
-              _FakeEither_0<_i5.Failure, List<_i6.Header>>())) as _i4
-          .Future<_i2.Either<_i5.Failure, List<_i6.Header>>>);
-  @override
-  _i4.Future<_i2.Either<_i5.Failure, _i7.EntriesPage>> getAgendaEntriesPage(
+  _i4.Future<_i2.Either<_i5.Failure, _i6.EntriesPage>> getAgendaEntriesPage(
           String? url, int? page) =>
       (super.noSuchMethod(Invocation.method(#getAgendaEntriesPage, [url, page]),
-          returnValue: Future<_i2.Either<_i5.Failure, _i7.EntriesPage>>.value(
-              _FakeEither_0<_i5.Failure, _i7.EntriesPage>())) as _i4
-          .Future<_i2.Either<_i5.Failure, _i7.EntriesPage>>);
+          returnValue: Future<_i2.Either<_i5.Failure, _i6.EntriesPage>>.value(
+              _FakeEither_0<_i5.Failure, _i6.EntriesPage>())) as _i4
+          .Future<_i2.Either<_i5.Failure, _i6.EntriesPage>>);
   @override
   String toString() => super.toString();
 }
@@ -60,22 +52,22 @@ class MockAgendaRepository extends _i1.Mock implements _i3.AgendaRepository {
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockGetAgendaEntriesPage extends _i1.Mock
-    implements _i8.GetAgendaEntriesPage {
+    implements _i7.GetAgendaEntriesPage {
   MockGetAgendaEntriesPage() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i3.AgendaRepository get agendaRepository =>
+  _i3.EntriesRepository get agendaRepository =>
       (super.noSuchMethod(Invocation.getter(#agendaRepository),
-          returnValue: _FakeAgendaRepository_1()) as _i3.AgendaRepository);
+          returnValue: _FakeEntriesRepository_1()) as _i3.EntriesRepository);
   @override
-  _i4.Future<_i2.Either<_i5.Failure, _i7.EntriesPage>> call(
-          {_i9.GetAgendaEntriesPageParameter? parameter}) =>
+  _i4.Future<_i2.Either<_i5.Failure, _i6.EntriesPage>> call(
+          {_i8.GetAgendaEntriesPageParameter? parameter}) =>
       (super.noSuchMethod(Invocation.method(#call, [], {#parameter: parameter}),
-          returnValue: Future<_i2.Either<_i5.Failure, _i7.EntriesPage>>.value(
-              _FakeEither_0<_i5.Failure, _i7.EntriesPage>())) as _i4
-          .Future<_i2.Either<_i5.Failure, _i7.EntriesPage>>);
+          returnValue: Future<_i2.Either<_i5.Failure, _i6.EntriesPage>>.value(
+              _FakeEither_0<_i5.Failure, _i6.EntriesPage>())) as _i4
+          .Future<_i2.Either<_i5.Failure, _i6.EntriesPage>>);
   @override
   String toString() => super.toString();
 }

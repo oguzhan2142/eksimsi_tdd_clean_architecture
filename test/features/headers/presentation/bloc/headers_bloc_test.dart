@@ -1,15 +1,18 @@
 import 'package:dartz/dartz.dart';
 import 'package:eksimsi_tdd_clean_architecture/core/constants/error_messages.dart';
 import 'package:eksimsi_tdd_clean_architecture/core/error/failures.dart';
-import 'package:eksimsi_tdd_clean_architecture/features/entries/domain/entities/header.dart';
-import 'package:eksimsi_tdd_clean_architecture/features/entries/domain/usecases/get_agenda_headers.dart';
-import 'package:eksimsi_tdd_clean_architecture/features/entries/presentation/blocs/headers_bloc/headers_bloc.dart';
+import 'package:eksimsi_tdd_clean_architecture/features/headers/domain/entities/header.dart';
+import 'package:eksimsi_tdd_clean_architecture/features/headers/domain/usecases/get_headers.dart';
+
+import 'package:eksimsi_tdd_clean_architecture/features/headers/presentation/bloc/headers_bloc/headers_bloc.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
 import 'headers_bloc_test.mocks.dart';
+
+
 
 @GenerateMocks([GetAgendaHeaders])
 void main() {
