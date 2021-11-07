@@ -1,7 +1,7 @@
 import 'package:html/dom.dart';
 
-import '../../domain/entities/contents.dart';
 import '../../../../core/model/base_content.dart';
+import '../../domain/entities/contents.dart';
 
 /* 
   inner link - class = 'b'
