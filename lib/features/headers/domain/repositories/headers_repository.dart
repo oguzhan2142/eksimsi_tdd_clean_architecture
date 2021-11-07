@@ -4,7 +4,7 @@ import 'package:eksimsi_tdd_clean_architecture/features/headers/domain/entities/
 import 'package:eksimsi_tdd_clean_architecture/features/headers/domain/entities/header.dart';
 
 abstract class HeadersRepository {
-  Future<Either<Failure, List<Header>>> getHeaders();
-  
+  Future<Either<Failure, List<Header>>> getHeaders({required String href});
+
   Future<Either<Failure, List<ChannelHeader>>> getChannelHeaders();
 }

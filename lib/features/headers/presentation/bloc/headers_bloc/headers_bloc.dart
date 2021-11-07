@@ -1,7 +1,8 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:eksimsi_tdd_clean_architecture/core/parameters/parameter.dart';
+import 'package:eksimsi_tdd_clean_architecture/core/parameters/href_parameter.dart';
+import 'package:eksimsi_tdd_clean_architecture/core/parameters/no_parameter.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/headers/domain/entities/channel_header.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/headers/domain/usecases/get_channel_headers.dart';
 import 'package:equatable/equatable.dart';
@@ -9,13 +10,13 @@ import 'package:equatable/equatable.dart';
 import '../../../../../core/constants/error_messages.dart';
 import '../../../../../core/error/failures.dart';
 import '../../../../headers/domain/entities/header.dart';
-import '../../../../headers/domain/usecases/get_headers.dart';
+import '../../../domain/usecases/get_entries_headers.dart';
 
 part 'headers_event.dart';
 part 'headers_state.dart';
 
 class HeadersBloc extends Bloc<HeadersEvent, HeadersState> {
-  final GetAgendaHeaders getAgendaHeaders;
+  final GetEntriesHeaders getAgendaHeaders;
   final GetChannelHeaders getChannelHeaders;
 
   HeadersBloc({
@@ -36,7 +37,7 @@ class HeadersBloc extends Bloc<HeadersEvent, HeadersState> {
     Emitter<HeadersState> emit,
   ) async {
     emit(GetAgendaHeadersInProgress());
-    final failureOrHeaders = await getAgendaHeaders();
+    final failureOrHeaders = await getAgendaHeaders.call(parameter: HrefParameter(href: event.href));
 
     final result = failureOrHeaders.fold(
       (l) {

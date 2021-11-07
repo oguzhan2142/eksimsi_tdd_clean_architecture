@@ -30,10 +30,11 @@ class MockHeadersRepositoryRemoteDataSource extends _i1.Mock
   }
 
   @override
-  _i3.Future<List<_i4.HeaderModel>> getHeaders() => (super.noSuchMethod(
-          Invocation.method(#getHeaders, []),
-          returnValue: Future<List<_i4.HeaderModel>>.value(<_i4.HeaderModel>[]))
-      as _i3.Future<List<_i4.HeaderModel>>);
+  _i3.Future<List<_i4.HeaderModel>> getHeaders({String? href}) =>
+      (super.noSuchMethod(Invocation.method(#getHeaders, [], {#href: href}),
+              returnValue:
+                  Future<List<_i4.HeaderModel>>.value(<_i4.HeaderModel>[]))
+          as _i3.Future<List<_i4.HeaderModel>>);
   @override
   String toString() => super.toString();
 }

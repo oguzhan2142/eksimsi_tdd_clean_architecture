@@ -5,26 +5,26 @@ import 'package:eksimsi_tdd_clean_architecture/core/error/failures.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/headers/domain/entities/channel_header.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/headers/domain/entities/header.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/headers/domain/usecases/get_channel_headers.dart';
-import 'package:eksimsi_tdd_clean_architecture/features/headers/domain/usecases/get_headers.dart';
+import 'package:eksimsi_tdd_clean_architecture/features/headers/domain/usecases/get_entries_headers.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/headers/presentation/bloc/headers_bloc/headers_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'headers_bloc_test.mocks.dart';
 
-@GenerateMocks([GetAgendaHeaders, GetChannelHeaders])
+@GenerateMocks([GetEntriesHeaders, GetChannelHeaders])
 void main() {
-  late MockGetAgendaHeaders getAgendaHeaders;
+  late MockGetEntriesHeaders getEntriesHeaders;
   late MockGetChannelHeaders getChannelHeaders;
 
   late HeadersBloc bloc;
 
   setUp(() {
-    getAgendaHeaders = MockGetAgendaHeaders();
+    getEntriesHeaders = MockGetEntriesHeaders();
     getChannelHeaders = MockGetChannelHeaders();
 
     bloc = HeadersBloc(
-      getAgendaHeaders: getAgendaHeaders,
+      getAgendaHeaders: getEntriesHeaders,
       getChannelHeaders: getChannelHeaders,
     );
   });
@@ -126,8 +126,8 @@ void main() {
 
       test('should emit [GetHeadersError] when cant get data from source', () {
         // arrange
-        when(getAgendaHeaders()).thenAnswer(
-          (realInvocation) => Future.value(Left(ServerFailure())),
+        when(getEntriesHeaders.call(parameter: anyNamed('parameter'))).thenAnswer(
+          (_) => Future.value(Left(ServerFailure())),
         );
         final expected = [
           GetAgendaHeadersInProgress(),
@@ -138,12 +138,12 @@ void main() {
         expectLater(bloc.stream, emitsInOrder(expected));
 
         // act
-        bloc.add(GetAgendaHeadersEvent());
+        bloc.add(const GetAgendaHeadersEvent(href: ''));
       });
 
       test('should emit [GetHeadersError] when no internet connection', () {
         // arrange
-        when(getAgendaHeaders()).thenAnswer(
+        when(getEntriesHeaders(parameter: anyNamed('parameter'))).thenAnswer(
           (realInvocation) => Future.value(Left(NoInternetFailure())),
         );
 
@@ -156,14 +156,14 @@ void main() {
         expectLater(bloc.stream, emitsInOrder(expected));
 
         // act
-        bloc.add(GetAgendaHeadersEvent());
+        bloc.add(const GetAgendaHeadersEvent(href: ''));
       });
 
       test(
           'should emit [GetAgendaHeadersInProgress] [GetAgendaHeadersCompleted] when data is gotten successfully',
           () {
         // arrange
-        when(getAgendaHeaders())
+        when(getEntriesHeaders(parameter: anyNamed('parameter')))
             .thenAnswer((realInvocation) => Future.value(Right(headers)));
 
         final expected = [
@@ -175,7 +175,7 @@ void main() {
         expectLater(bloc.stream, emitsInOrder(expected));
 
         // act
-        bloc.add(GetAgendaHeadersEvent());
+        bloc.add(const GetAgendaHeadersEvent(href: ''));
       });
     });
   });

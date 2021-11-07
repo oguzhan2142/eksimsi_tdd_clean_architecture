@@ -16,12 +16,20 @@ class HeadersRepositoryImpl extends HeadersRepository {
     required this.remoteDataSource,
   });
 
+
+
   @override
-  Future<Either<Failure, List<Header>>> getHeaders() async {
-    try {
+  Future<Either<Failure, List<ChannelHeader>>> getChannelHeaders() {
+
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<Failure, List<Header>>> getHeaders({required String href}) async{
+   try {
       if (!await networkInfo.isConnected) throw NoInternetException();
 
-      final headers = await remoteDataSource.getHeaders();
+      final headers = await remoteDataSource.getHeaders(href: href);
 
       return Right(headers);
     } on ServerException {
@@ -29,11 +37,5 @@ class HeadersRepositoryImpl extends HeadersRepository {
     } on NoInternetException {
       return Left(NoInternetFailure());
     }
-  }
-
-  @override
-  Future<Either<Failure, List<ChannelHeader>>> getChannelHeaders() {
-    // TODO: implement getChannelHeaders
-    throw UnimplementedError();
   }
 }

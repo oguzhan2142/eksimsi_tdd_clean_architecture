@@ -9,7 +9,7 @@ import 'features/entries/data/repositories/entries_repository_impl.dart';
 import 'features/entries/domain/repositories/entries_repository.dart';
 import 'features/entries/domain/usecases/get_agenda_entries_page.dart';
 import 'features/entries/presentation/blocs/entry_page_bloc/entry_page_bloc.dart';
-import 'features/headers/domain/usecases/get_headers.dart';
+import 'features/headers/domain/usecases/get_entries_headers.dart';
 import 'features/headers/presentation/bloc/headers_bloc/headers_bloc.dart';
 
 final sl = GetIt.instance;
@@ -24,7 +24,7 @@ void init() {
 
 
   sl.registerLazySingleton(() => GetChannelHeaders(channelRepository: sl()));
-  sl.registerLazySingleton(() => GetAgendaHeaders(sl()));
+  sl.registerLazySingleton(() => GetEntriesHeaders(sl()));
   sl.registerLazySingleton(() => GetAgendaEntriesPage(sl()));
 
   sl.registerLazySingleton<EntriesRepository>(

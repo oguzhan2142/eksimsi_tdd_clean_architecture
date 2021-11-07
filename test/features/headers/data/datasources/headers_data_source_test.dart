@@ -45,7 +45,7 @@ void main() {
       _setUpMockDioSuccessResponse('gundem.html', url: agendaPageUrl);
 
       // act
-      await remoteDataSource.getHeaders();
+      await remoteDataSource.getHeaders(href: '');
 
       // assert
       verify(mockDio.get(agendaPageUrl));
@@ -57,7 +57,7 @@ void main() {
       _setUpMockDioSuccessResponse('gundem.html');
 
       // act
-      final models = await remoteDataSource.getHeaders();
+      final models = await remoteDataSource.getHeaders(href: '');
 
       // assert
       expect(models, isNotEmpty);
@@ -70,7 +70,7 @@ void main() {
       // act
       final call = remoteDataSource.getHeaders;
       // assert
-      expect(() => call(), throwsA(const TypeMatcher<ServerException>()));
+      expect(() => call(href: ''), throwsA(const TypeMatcher<ServerException>()));
     });
   });
 }

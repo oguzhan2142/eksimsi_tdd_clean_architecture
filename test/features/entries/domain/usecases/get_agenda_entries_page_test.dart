@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:eksimsi_tdd_clean_architecture/core/error/failures.dart';
-import 'package:eksimsi_tdd_clean_architecture/core/parameters/get_agenda_entry_page_parameter.dart';
+import 'package:eksimsi_tdd_clean_architecture/core/parameters/href_page_parameter.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/entries/domain/entities/entries_page.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/entries/domain/entities/entry_page_href.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/entries/domain/repositories/entries_repository.dart';
@@ -39,7 +39,7 @@ void main() {
     entryPageHref: EntryPageHref(),
   );
 
-final param = GetAgendaEntriesPageParameter(href: '');
+final param = HrefPageParameter(href: '');
 
   Future<Either<Failure, EntriesPage>> _arrangeAndAct(
     EntriesPage data,

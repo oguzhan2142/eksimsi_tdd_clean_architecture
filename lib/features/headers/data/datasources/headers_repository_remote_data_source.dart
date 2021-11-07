@@ -4,7 +4,7 @@ import 'package:eksimsi_tdd_clean_architecture/features/headers/data/models/head
 import 'package:html/parser.dart';
 
 abstract class HeadersRepositoryRemoteDataSource {
-  Future<List<HeaderModel>> getHeaders();
+  Future<List<HeaderModel>> getHeaders({required String href});
 }
 
 class HeadersRepositoryRemoteDataSourceImpl
@@ -14,7 +14,7 @@ class HeadersRepositoryRemoteDataSourceImpl
   HeadersRepositoryRemoteDataSourceImpl({required this.client});
 
   @override
-  Future<List<HeaderModel>> getHeaders() async {
+  Future<List<HeaderModel>> getHeaders({required String href}) async {
     final response =
         await client.get('https://eksisozluk.com/basliklar/gundem');
 

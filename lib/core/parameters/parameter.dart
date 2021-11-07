@@ -1,3 +1,5 @@
-abstract class BaseParameter {}
+import 'package:equatable/equatable.dart';
 
-class NoParameter extends BaseParameter {}
+abstract class BaseParameter  extends Equatable{}
+
+

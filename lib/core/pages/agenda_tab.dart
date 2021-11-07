@@ -17,7 +17,7 @@ class _AgendaTabState extends State<AgendaTab> {
   void initState() {
     headersBloc = BlocProvider.of<HeadersBloc>(context);
 
-    headersBloc.add(GetAgendaHeadersEvent());
+    headersBloc.add(GetAgendaHeadersEvent(href: '/basliklar/gundem'));
     super.initState();
   }
 
@@ -39,7 +39,7 @@ class _AgendaTabState extends State<AgendaTab> {
         if (state is GetAgendaHeadersCompleted) {
           return RefreshIndicator(
             onRefresh: () async {
-              headersBloc.add(GetAgendaHeadersEvent());
+              headersBloc.add(GetAgendaHeadersEvent(href: '/basliklar/gundem'));
             },
             child: ListView.separated(
               itemCount: state.headers.length,

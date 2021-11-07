@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:eksimsi_tdd_clean_architecture/core/error/failures.dart';
-import 'package:eksimsi_tdd_clean_architecture/core/parameters/parameter.dart';
+import 'package:eksimsi_tdd_clean_architecture/core/parameters/no_parameter.dart';
 import 'package:eksimsi_tdd_clean_architecture/core/usecases/usecase.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/headers/domain/entities/channel_header.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/headers/domain/repositories/headers_repository.dart';

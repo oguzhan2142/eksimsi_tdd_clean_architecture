@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:eksimsi_tdd_clean_architecture/core/parameters/get_agenda_entry_page_parameter.dart';
+import 'package:eksimsi_tdd_clean_architecture/core/parameters/href_page_parameter.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/headers/domain/usecases/get_channel_headers.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/headers/presentation/bloc/headers_bloc/headers_bloc.dart';
 import 'package:equatable/equatable.dart';
@@ -31,7 +31,7 @@ class EntryPageBloc extends Bloc<EntryPageEvent, EntryPageState> {
     emit(GetEntryPageInProgress());
 
     final parameter =
-        GetAgendaEntriesPageParameter(href: event.pageHref, page: event.page);
+        HrefPageParameter(href: event.pageHref, page: event.page);
     final failureOrEntriesPage =
         await getAgendaEntriesPage(parameter: parameter);
 

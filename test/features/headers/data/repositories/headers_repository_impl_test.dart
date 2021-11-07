@@ -53,12 +53,12 @@ void main() {
   group('GetAgendaHeader', () {
     test('should check device is online', () async {
       // arrange
-      when(remoteDataSource.getHeaders())
+      when(remoteDataSource.getHeaders(href: anyNamed('href')))
           .thenAnswer((_) async => agendaHeaders);
       when(mockNetworkInfo.isConnected).thenAnswer((_) async => true);
 
       // act
-      agendaRepositoryImp.getHeaders();
+      agendaRepositoryImp.getHeaders(href: '');
 
       // assert
       verify(mockNetworkInfo.isConnected);
@@ -68,24 +68,24 @@ void main() {
       test('should return remote data when remote data call is successfull',
           () async {
         // arrange
-        when(remoteDataSource.getHeaders())
+        when(remoteDataSource.getHeaders(href: anyNamed('href')))
             .thenAnswer((_) async => agendaHeaders);
         // act
-        final headers = await agendaRepositoryImp.getHeaders();
+        final headers = await agendaRepositoryImp.getHeaders(href: '');
 
         // assert
-        verify(remoteDataSource.getHeaders());
+        verify(remoteDataSource.getHeaders(href: anyNamed('href')));
         expect(headers, equals(Right(agendaHeaders)));
       });
 
       test('should return server failure when remote data call is unsucessfull',
           () async {
         // arrange
-        when(remoteDataSource.getHeaders()).thenThrow(ServerException());
+        when(remoteDataSource.getHeaders(href: anyNamed('href'))).thenThrow(ServerException());
         // act
-        final result = await agendaRepositoryImp.getHeaders();
+        final result = await agendaRepositoryImp.getHeaders(href: '');
         // assert
-        verify(remoteDataSource.getHeaders());
+        verify(remoteDataSource.getHeaders(href: anyNamed('href')));
         verifyNoMoreInteractions(remoteDataSource);
         expect(result, Left(ServerFailure()));
       });
@@ -95,9 +95,9 @@ void main() {
       test('should return NoInternet Failure when not connected to internet',
           () async {
         // arrange
-        when(remoteDataSource.getHeaders()).thenThrow(NoInternetException());
+        when(remoteDataSource.getHeaders(href: anyNamed('href'))).thenThrow(NoInternetException());
         // act
-        final result = await agendaRepositoryImp.getHeaders();
+        final result = await agendaRepositoryImp.getHeaders(href: '');
         // assert
         expect(Left(NoInternetFailure()), result);
       });

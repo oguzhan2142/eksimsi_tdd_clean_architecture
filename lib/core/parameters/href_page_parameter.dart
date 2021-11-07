@@ -1,11 +1,15 @@
 import 'package:eksimsi_tdd_clean_architecture/core/parameters/parameter.dart';
 
-class GetAgendaEntriesPageParameter extends BaseParameter {
+class HrefPageParameter extends BaseParameter {
   final String href;
   final int? page;
 
-  GetAgendaEntriesPageParameter({
+  HrefPageParameter({
     required this.href,
     this.page,
   });
+
+  @override
+
+  List<Object?> get props => [href, page];
 }
