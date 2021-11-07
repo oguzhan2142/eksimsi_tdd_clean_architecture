@@ -1,7 +1,6 @@
-import 'package:eksimsi_tdd_clean_architecture/features/entries/domain/entities/contents.dart';
 import 'package:html/dom.dart';
 
-
+import '../../domain/entities/contents.dart';
 import '../../../../core/model/base_content.dart';
 
 /* 

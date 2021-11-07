@@ -1,9 +1,11 @@
-import 'package:eksimsi_tdd_clean_architecture/core/utils/content_spans_generator.dart';
 import 'package:eksimsi_tdd_clean_architecture/core/model/base_content.dart';
-import 'package:eksimsi_tdd_clean_architecture/features/agenda/domain/entities/contents.dart';
+import 'package:eksimsi_tdd_clean_architecture/core/utils/content_spans_generator.dart';
+import 'package:eksimsi_tdd_clean_architecture/features/entries/domain/entities/contents.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-main() {
+
+
+void main() {
   late List<Content> contents;
   late ContentSpansGenerator extractor;
 
@@ -14,16 +16,20 @@ main() {
       InnerLinkContent(href: 'href', text: 'text'),
       BrContent(),
       TextContent(text: 'text'),
-      SpoilerContent(contents: [
-        TextContent(text: 'text'),
-        TextContent(text: 'text'),
-        SpoilerContent(contents: [
+      SpoilerContent(
+        contents: [
           TextContent(text: 'text'),
           TextContent(text: 'text'),
-        ]),
-        TextContent(text: 'text'),
-        TextContent(text: 'text'),
-      ]),
+          SpoilerContent(
+            contents: [
+              TextContent(text: 'text'),
+              TextContent(text: 'text'),
+            ],
+          ),
+          TextContent(text: 'text'),
+          TextContent(text: 'text'),
+        ],
+      ),
     ];
     extractor = ContentSpansGenerator(contents: contents);
   });
@@ -35,6 +41,4 @@ main() {
     // assert
     expect(spans.length, 6);
   });
-
-
 }

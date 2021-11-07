@@ -5,7 +5,7 @@ class ChannelHeader extends Equatable {
   final String subTitle;
   final String href;
 
-  ChannelHeader({
+  const ChannelHeader({
     required this.title,
     required this.subTitle,
     required this.href,

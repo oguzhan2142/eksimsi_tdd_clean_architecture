@@ -1,14 +1,15 @@
 import 'package:connectivity/connectivity.dart';
 import 'package:dio/dio.dart';
-import 'core/platform/network_info.dart';
-import 'features/agenda/data/datasources/agenda_repository_remote_data_source.dart';
-import 'features/agenda/data/repositories/agenda_repository_impl.dart';
-import 'features/agenda/domain/repositories/agenda_repository.dart';
-import 'features/agenda/domain/usecases/get_agenda_entries_page.dart';
-import 'features/agenda/domain/usecases/get_agenda_headers.dart';
-import 'features/agenda/presentation/blocs/entry_page_bloc/entry_page_bloc.dart';
-import 'features/agenda/presentation/blocs/headers_bloc/headers_bloc.dart';
 import 'package:get_it/get_it.dart';
+
+import 'core/platform/network_info.dart';
+import 'features/entries/data/datasources/entries_repository_remote_data_source.dart';
+import 'features/entries/data/repositories/entries_repository_impl.dart';
+import 'features/entries/domain/repositories/agenda_repository.dart';
+import 'features/entries/domain/usecases/get_agenda_entries_page.dart';
+import 'features/entries/domain/usecases/get_agenda_headers.dart';
+import 'features/entries/presentation/blocs/entry_page_bloc/entry_page_bloc.dart';
+import 'features/entries/presentation/blocs/headers_bloc/headers_bloc.dart';
 
 final sl = GetIt.instance;
 
@@ -21,11 +22,16 @@ void init() {
   sl.registerLazySingleton(() => GetAgendaHeaders(sl()));
   sl.registerLazySingleton(() => GetAgendaEntriesPage(sl()));
 
-  sl.registerLazySingleton<AgendaRepository>(() => AgendaRepositoryImp(
-      agendaRepositoryRemoteDataSource: sl(), networkInfo: sl()));
+  sl.registerLazySingleton<AgendaRepository>(
+    () => AgendaRepositoryImp(
+      entriesRepositoryRemoteDataSource: sl(),
+      networkInfo: sl(),
+    ),
+  );
 
-  sl.registerLazySingleton<AgendaRepositoryRemoteDataSource>(
-      () => AgendaRepositoryRemoteDataSourceImpl(client: sl()));
+  sl.registerLazySingleton<EntriesRepositoryRemoteDataSource>(
+    () => EntriesRepositoryRemoteDataSourceImpl(client: sl()),
+  );
 
   // Core
   sl.registerLazySingleton<Dio>(() => Dio());

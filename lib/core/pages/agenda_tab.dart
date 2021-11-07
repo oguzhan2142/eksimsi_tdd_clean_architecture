@@ -1,5 +1,7 @@
-import '../../features/agenda/presentation/blocs/headers_bloc/headers_bloc.dart';
-import '../../features/agenda/presentation/widgets/agenda_list_item.dart';
+
+
+import 'package:eksimsi_tdd_clean_architecture/features/entries/presentation/blocs/headers_bloc/headers_bloc.dart';
+import 'package:eksimsi_tdd_clean_architecture/features/entries/presentation/widgets/entry_header_list_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -45,7 +47,7 @@ class _AgendaTabState extends State<AgendaTab> {
               itemCount: state.headers.length,
               padding: EdgeInsets.only(top: 20, bottom: 90),
               separatorBuilder: (context, index) => SizedBox(height: 8),
-              itemBuilder: (context, index) => AgendaListItem(
+              itemBuilder: (context, index) => EntryHeaderListItem(
                 agendaHeader: state.headers[index],
               ),
             ),

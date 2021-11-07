@@ -1,6 +1,5 @@
 import 'package:eksimsi_tdd_clean_architecture/core/error/exception.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/entries/data/extractors/entry_page_extractor.dart';
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:html/dom.dart';
 
@@ -39,7 +38,7 @@ void main() {
         expect(actual, todayHref);
       });
 
-      test('should return [ServerException] when can\'t find href', () {
+      test("should return [ServerException] when can't find href", () {
         final extractor =
             _createExtractorWithAFixture('entries_page_without_page_href.html');
 
@@ -48,7 +47,7 @@ void main() {
 
       test('should return valid href when data appropriate', () {
         const actualHref =
-            '/turkiyenin-2021-ikinci-ceyrekte-21-7-buyumesi--7022174';
+            "/turkiyenin-2021-ikinci-ceyrekte-21-7-buyumesi--7022174";
 
         final href = extractorWithCorrectData.extractHref();
 

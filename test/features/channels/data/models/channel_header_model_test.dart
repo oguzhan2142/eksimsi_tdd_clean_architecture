@@ -1,8 +1,9 @@
 import 'dart:collection';
 
 import 'package:eksimsi_tdd_clean_architecture/core/error/exception.dart';
-import 'package:eksimsi_tdd_clean_architecture/features/agenda/data/extractors/channels_extractor.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/channels/data/models/channel_header_model.dart';
+
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:html/dom.dart';
 import 'package:mockito/annotations.dart';

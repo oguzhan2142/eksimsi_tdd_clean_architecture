@@ -1,6 +1,5 @@
-import 'package:eksimsi_tdd_clean_architecture/features/agenda/data/extractors/content_extractor.dart';
+import 'package:eksimsi_tdd_clean_architecture/features/entries/data/extractors/content_extractor.dart';
 import 'package:eksimsi_tdd_clean_architecture/features/entries/domain/entities/contents.dart';
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:html/dom.dart';
 
@@ -105,7 +104,8 @@ void main() {
     group('when use spoiler_content.html file', () {
       test('should return only one spoiler content', () {
         // act
-        final lenght = extractor.extract(nodeListOnlyContainsSpoilerContent).length;
+        final lenght =
+            extractor.extract(nodeListOnlyContainsSpoilerContent).length;
 
         // assert
         expect(lenght, 1);
@@ -113,7 +113,7 @@ void main() {
 
       test('should not contains any spoiler text inside nodes', () {
         // arrange
-        final contents =extractor.extract(nodeListOnlyContainsSpoilerContent);
+        final contents = extractor.extract(nodeListOnlyContainsSpoilerContent);
         final spoiler = contents.first as SpoilerContent;
 
         // act
@@ -134,15 +134,16 @@ void main() {
       });
 
       test(
-          'should return spoiler content with nodelist which hasn\'t any inner_link_content',
+          "should return spoiler content with nodelist which hasn't any inner_link_content",
           () {
         // act
-        final content = extractor.extract(nodeListOnlyContainsSpoilerContent).first as SpoilerContent;
+        final content = extractor
+            .extract(nodeListOnlyContainsSpoilerContent)
+            .first as SpoilerContent;
 
         final nodes = content.contents;
 
-        final innerLinks =
-            nodes.where((element) => element is InnerLinkContent);
+        final innerLinks = nodes.whereType<InnerLinkContent>();
         // assert
         expect(innerLinks.length, 0);
       });
@@ -150,11 +151,12 @@ void main() {
       test('should return spoiler content with nodelist which has 9 br content',
           () {
         // act
-        final content = extractor.extract(nodeListOnlyContainsSpoilerContent).first as SpoilerContent;
-
+        final content = extractor
+            .extract(nodeListOnlyContainsSpoilerContent)
+            .first as SpoilerContent;
 
         final brContents =
-            content.contents.where((element) => element is BrContent);
+            content.contents.whereType<BrContent>();
 
         // assert
         expect(brContents.length, 9);
